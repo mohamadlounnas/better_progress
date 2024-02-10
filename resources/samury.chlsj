@@ -1,0 +1,3698 @@
+[
+    {
+        "status": "COMPLETE",
+        "method": "POST",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/authentication/v1/",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": false,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53539,
+        "times": {
+            "start": "2024-02-09T22:20:16.444+01:00",
+            "requestBegin": "2024-02-09T22:20:16.810+01:00",
+            "requestComplete": "2024-02-09T22:20:16.812+01:00",
+            "responseBegin": "2024-02-09T22:20:16.911+01:00",
+            "end": "2024-02-09T22:20:16.916+01:00"
+        },
+        "durations": {
+            "total": 334,
+            "dns": 64,
+            "connect": 36,
+            "ssl": 128,
+            "request": 2,
+            "response": 5,
+            "latency": 99
+        },
+        "speeds": {
+            "overall": 97260,
+            "request": 886000,
+            "response": 6142600
+        },
+        "totalSize": 32485,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "handshake": 1382,
+                "headers": 341,
+                "body": 49
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "POST /api/authentication/v1/ HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "null"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "value": "49"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "handshake": 30289,
+                "headers": 0,
+                "body": 424
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "1; mode=block"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:16 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/AnneeAcademiqueEncours",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53539,
+        "times": {
+            "start": "2024-02-09T22:20:16.993+01:00",
+            "requestBegin": "2024-02-09T22:20:16.995+01:00",
+            "requestComplete": "2024-02-09T22:20:17.006+01:00",
+            "responseBegin": "2024-02-09T22:20:17.028+01:00",
+            "end": "2024-02-09T22:20:17.029+01:00"
+        },
+        "durations": {
+            "total": 34,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 11,
+            "response": 1,
+            "latency": 22
+        },
+        "speeds": {
+            "overall": 17970,
+            "request": 50636,
+            "response": 54000
+        },
+        "totalSize": 611,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 557,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/AnneeAcademiqueEncours HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 54
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:16 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/bac/2020/32027978/notes",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": false,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53541,
+        "times": {
+            "start": "2024-02-09T22:20:17+01:00",
+            "requestBegin": "2024-02-09T22:20:17.171+01:00",
+            "requestComplete": "2024-02-09T22:20:17.182+01:00",
+            "responseBegin": "2024-02-09T22:20:17.224+01:00",
+            "end": "2024-02-09T22:20:17.225+01:00"
+        },
+        "durations": {
+            "total": 189,
+            "dns": 3,
+            "connect": 23,
+            "ssl": 109,
+            "request": 11,
+            "response": 1,
+            "latency": 42
+        },
+        "speeds": {
+            "overall": 173089,
+            "request": 175272,
+            "response": 30786000
+        },
+        "totalSize": 32714,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "handshake": 1370,
+                "headers": 558,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/bac/2020/32027978/notes HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "handshake": 30289,
+                "headers": 0,
+                "body": 497
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/bac/2020/32027978/dias",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": false,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53545,
+        "times": {
+            "start": "2024-02-09T22:20:17.006+01:00",
+            "requestBegin": "2024-02-09T22:20:17.200+01:00",
+            "requestComplete": "2024-02-09T22:20:17.201+01:00",
+            "responseBegin": "2024-02-09T22:20:17.244+01:00",
+            "end": "2024-02-09T22:20:17.263+01:00"
+        },
+        "durations": {
+            "total": 197,
+            "dns": 9,
+            "connect": 22,
+            "ssl": 103,
+            "request": 1,
+            "response": 19,
+            "latency": 43
+        },
+        "speeds": {
+            "overall": 191685,
+            "request": 1927000,
+            "response": 1886052
+        },
+        "totalSize": 37762,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "handshake": 1370,
+                "headers": 557,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/bac/2020/32027978/dias HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "handshake": 30289,
+                "headers": 0,
+                "body": 5546
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/bac/2020/32027978/individu",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": false,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53543,
+        "times": {
+            "start": "2024-02-09T22:20:17.006+01:00",
+            "requestBegin": "2024-02-09T22:20:17.206+01:00",
+            "requestComplete": "2024-02-09T22:20:17.206+01:00",
+            "responseBegin": "2024-02-09T22:20:17.244+01:00",
+            "end": "2024-02-09T22:20:17.246+01:00"
+        },
+        "durations": {
+            "total": 180,
+            "dns": 10,
+            "connect": 24,
+            "ssl": 106,
+            "request": 0,
+            "response": 2,
+            "latency": 38
+        },
+        "speeds": {
+            "overall": 180916,
+            "request": 0,
+            "response": 15317000
+        },
+        "totalSize": 32565,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "handshake": 1370,
+                "headers": 561,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/bac/2020/32027978/individu HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "handshake": 30289,
+                "headers": 0,
+                "body": 345
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/bac/2020/32027978",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": false,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53542,
+        "times": {
+            "start": "2024-02-09T22:20:17.006+01:00",
+            "requestBegin": "2024-02-09T22:20:17.284+01:00",
+            "requestComplete": "2024-02-09T22:20:17.284+01:00",
+            "responseBegin": "2024-02-09T22:20:17.317+01:00",
+            "end": "2024-02-09T22:20:17.340+01:00"
+        },
+        "durations": {
+            "total": 304,
+            "dns": 3,
+            "connect": 23,
+            "ssl": 222,
+            "request": 0,
+            "response": 23,
+            "latency": 33
+        },
+        "speeds": {
+            "overall": 107157,
+            "request": 0,
+            "response": 1332782
+        },
+        "totalSize": 32576,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "handshake": 1370,
+                "headers": 552,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/bac/2020/32027978 HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "handshake": 30289,
+                "headers": 0,
+                "body": 365
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/image/2020/32027978",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": false,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53544,
+        "times": {
+            "start": "2024-02-09T22:20:17.009+01:00",
+            "requestBegin": "2024-02-09T22:20:17.171+01:00",
+            "requestComplete": "2024-02-09T22:20:17.181+01:00",
+            "responseBegin": "2024-02-09T22:20:17.385+01:00",
+            "end": "2024-02-09T22:20:17.388+01:00"
+        },
+        "durations": {
+            "total": 333,
+            "dns": 1,
+            "connect": 23,
+            "ssl": 92,
+            "request": 10,
+            "response": 3,
+            "latency": 204
+        },
+        "speeds": {
+            "overall": 110216,
+            "request": 192400,
+            "response": 11592666
+        },
+        "totalSize": 36702,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "handshake": 1370,
+                "headers": 554,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/image/2020/32027978 HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "handshake": 30289,
+                "headers": 0,
+                "body": 4489
+            },
+            "mimeType": "image/jpeg",
+            "charset": "UTF-8",
+            "contentEncoding": "gzip",
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "image/jpeg;charset=UTF-8"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:16 GMT"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Content-Encoding",
+                        "value": "gzip"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/dettes/2020/32027978",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53539,
+        "times": {
+            "start": "2024-02-09T22:20:17.030+01:00",
+            "requestBegin": "2024-02-09T22:20:17.030+01:00",
+            "requestComplete": "2024-02-09T22:20:17.032+01:00",
+            "responseBegin": "2024-02-09T22:20:17.239+01:00",
+            "end": "2024-02-09T22:20:17.241+01:00"
+        },
+        "durations": {
+            "total": 211,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 2,
+            "response": 2,
+            "latency": 207
+        },
+        "speeds": {
+            "overall": 2630,
+            "request": 277500,
+            "response": 0
+        },
+        "totalSize": 555,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 555,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/dettes/2020/32027978 HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:16 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/congeacademiques/2020/32027978",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53541,
+        "times": {
+            "start": "2024-02-09T22:20:17.226+01:00",
+            "requestBegin": "2024-02-09T22:20:17.233+01:00",
+            "requestComplete": "2024-02-09T22:20:17.235+01:00",
+            "responseBegin": "2024-02-09T22:20:17.271+01:00",
+            "end": "2024-02-09T22:20:17.275+01:00"
+        },
+        "durations": {
+            "total": 42,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 2,
+            "response": 4,
+            "latency": 36
+        },
+        "speeds": {
+            "overall": 13452,
+            "request": 282500,
+            "response": 0
+        },
+        "totalSize": 565,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 565,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/congeacademiques/2020/32027978 HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 403,
+            "sizes": {
+                "headers": 0,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 403 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/bac/2020/32027978/demandesHebregement",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53539,
+        "times": {
+            "start": "2024-02-09T22:20:17.242+01:00",
+            "requestBegin": "2024-02-09T22:20:17.243+01:00",
+            "requestComplete": "2024-02-09T22:20:17.243+01:00",
+            "responseBegin": "2024-02-09T22:20:17.297+01:00",
+            "end": "2024-02-09T22:20:17.299+01:00"
+        },
+        "durations": {
+            "total": 56,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 0,
+            "response": 2,
+            "latency": 54
+        },
+        "speeds": {
+            "overall": 61196,
+            "request": 0,
+            "response": 1427500
+        },
+        "totalSize": 3427,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 572,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/bac/2020/32027978/demandesHebregement HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 2855
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/qitus/2020/32027978/qitus",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53543,
+        "times": {
+            "start": "2024-02-09T22:20:17.246+01:00",
+            "requestBegin": "2024-02-09T22:20:17.246+01:00",
+            "requestComplete": "2024-02-09T22:20:17.249+01:00",
+            "responseBegin": "2024-02-09T22:20:17.285+01:00",
+            "end": "2024-02-09T22:20:17.286+01:00"
+        },
+        "durations": {
+            "total": 40,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 3,
+            "response": 1,
+            "latency": 36
+        },
+        "speeds": {
+            "overall": 19525,
+            "request": 184666,
+            "response": 227000
+        },
+        "totalSize": 781,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 554,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/qitus/2020/32027978/qitus HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 404,
+            "sizes": {
+                "headers": 0,
+                "body": 227
+            },
+            "mimeType": "text/html",
+            "charset": "iso-8859-1",
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 404 Not Found",
+                "headers": [
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Server",
+                        "value": "Apache"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "value": "227"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "text/html; charset=iso-8859-1"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/bac/2020/32027978/anneeAcademique/19/dia",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53545,
+        "times": {
+            "start": "2024-02-09T22:20:17.265+01:00",
+            "requestBegin": "2024-02-09T22:20:17.268+01:00",
+            "requestComplete": "2024-02-09T22:20:17.268+01:00",
+            "responseBegin": "2024-02-09T22:20:17.304+01:00",
+            "end": "2024-02-09T22:20:17.305+01:00"
+        },
+        "durations": {
+            "total": 37,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 0,
+            "response": 1,
+            "latency": 36
+        },
+        "speeds": {
+            "overall": 54621,
+            "request": 0,
+            "response": 1446000
+        },
+        "totalSize": 2021,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 575,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/bac/2020/32027978/anneeAcademique/19/dia HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 1446
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/niveau/12/periodes",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53539,
+        "times": {
+            "start": "2024-02-09T22:20:17.308+01:00",
+            "requestBegin": "2024-02-09T22:20:17.309+01:00",
+            "requestComplete": "2024-02-09T22:20:17.309+01:00",
+            "responseBegin": "2024-02-09T22:20:18.192+01:00",
+            "end": "2024-02-09T22:20:18.195+01:00"
+        },
+        "durations": {
+            "total": 886,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 0,
+            "response": 3,
+            "latency": 883
+        },
+        "speeds": {
+            "overall": 1408,
+            "request": 0,
+            "response": 231666
+        },
+        "totalSize": 1248,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 553,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/niveau/12/periodes HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 695
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/bac/2020/32027978/dias/12308149/periode/bilans",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53545,
+        "times": {
+            "start": "2024-02-09T22:20:17.309+01:00",
+            "requestBegin": "2024-02-09T22:20:17.310+01:00",
+            "requestComplete": "2024-02-09T22:20:17.310+01:00",
+            "responseBegin": "2024-02-09T22:20:17.357+01:00",
+            "end": "2024-02-09T22:20:17.358+01:00"
+        },
+        "durations": {
+            "total": 48,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 0,
+            "response": 1,
+            "latency": 47
+        },
+        "speeds": {
+            "overall": 12104,
+            "request": 0,
+            "response": 0
+        },
+        "totalSize": 581,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 581,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/bac/2020/32027978/dias/12308149/periode/bilans HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/Examens/70820/niveau/12/examens",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53543,
+        "times": {
+            "start": "2024-02-09T22:20:17.309+01:00",
+            "requestBegin": "2024-02-09T22:20:17.309+01:00",
+            "requestComplete": "2024-02-09T22:20:17.309+01:00",
+            "responseBegin": "2024-02-09T22:20:17.387+01:00",
+            "end": "2024-02-09T22:20:17.415+01:00"
+        },
+        "durations": {
+            "total": 106,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 0,
+            "response": 28,
+            "latency": 78
+        },
+        "speeds": {
+            "overall": 63452,
+            "request": 0,
+            "response": 220000
+        },
+        "totalSize": 6726,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 566,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/Examens/70820/niveau/12/examens HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 6160
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/dia/12308149/groups",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53541,
+        "times": {
+            "start": "2024-02-09T22:20:17.309+01:00",
+            "requestBegin": "2024-02-09T22:20:17.311+01:00",
+            "requestComplete": "2024-02-09T22:20:17.311+01:00",
+            "responseBegin": "2024-02-09T22:20:17.369+01:00",
+            "end": "2024-02-09T22:20:17.373+01:00"
+        },
+        "durations": {
+            "total": 62,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 0,
+            "response": 4,
+            "latency": 58
+        },
+        "speeds": {
+            "overall": 22177,
+            "request": 0,
+            "response": 205250
+        },
+        "totalSize": 1375,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 554,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/dia/12308149/groups HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 821
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/logoEtablissement/136952",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53542,
+        "times": {
+            "start": "2024-02-09T22:20:17.342+01:00",
+            "requestBegin": "2024-02-09T22:20:17.345+01:00",
+            "requestComplete": "2024-02-09T22:20:17.345+01:00",
+            "responseBegin": "2024-02-09T22:20:17.378+01:00",
+            "end": "2024-02-09T22:20:17.439+01:00"
+        },
+        "durations": {
+            "total": 94,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 0,
+            "response": 61,
+            "latency": 33
+        },
+        "speeds": {
+            "overall": 647638,
+            "request": 0,
+            "response": 988836
+        },
+        "totalSize": 60878,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 559,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/logoEtablissement/136952 HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 60319
+            },
+            "mimeType": "image/jpeg",
+            "charset": "UTF-8",
+            "contentEncoding": "gzip",
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "image/jpeg;charset=UTF-8"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Content-Encoding",
+                        "value": "gzip"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/demandeTransport/2020/32027978/12308149",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53545,
+        "times": {
+            "start": "2024-02-09T22:20:17.359+01:00",
+            "requestBegin": "2024-02-09T22:20:17.362+01:00",
+            "requestComplete": "2024-02-09T22:20:17.366+01:00",
+            "responseBegin": "2024-02-09T22:20:17.400+01:00",
+            "end": "2024-02-09T22:20:17.408+01:00"
+        },
+        "durations": {
+            "total": 46,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 4,
+            "response": 8,
+            "latency": 34
+        },
+        "speeds": {
+            "overall": 16152,
+            "request": 143500,
+            "response": 21125
+        },
+        "totalSize": 743,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 574,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/demandeTransport/2020/32027978/12308149 HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 169
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:17 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/planningSession/dia/12308149/noteExamens",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53544,
+        "times": {
+            "start": "2024-02-09T22:20:21.322+01:00",
+            "requestBegin": "2024-02-09T22:20:21.341+01:00",
+            "requestComplete": "2024-02-09T22:20:21.343+01:00",
+            "responseBegin": "2024-02-09T22:20:21.465+01:00",
+            "end": "2024-02-09T22:20:21.468+01:00"
+        },
+        "durations": {
+            "total": 127,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 2,
+            "response": 3,
+            "latency": 122
+        },
+        "speeds": {
+            "overall": 41519,
+            "request": 287500,
+            "response": 1566000
+        },
+        "totalSize": 5273,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 575,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/planningSession/dia/12308149/noteExamens HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 4698
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:21 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/offreFormation/70820/niveau/12/planningExamens",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53543,
+        "times": {
+            "start": "2024-02-09T22:20:21.323+01:00",
+            "requestBegin": "2024-02-09T22:20:21.341+01:00",
+            "requestComplete": "2024-02-09T22:20:21.343+01:00",
+            "responseBegin": "2024-02-09T22:20:21.390+01:00",
+            "end": "2024-02-09T22:20:21.399+01:00"
+        },
+        "durations": {
+            "total": 58,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 2,
+            "response": 9,
+            "latency": 47
+        },
+        "speeds": {
+            "overall": 31810,
+            "request": 290500,
+            "response": 140444
+        },
+        "totalSize": 1845,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 581,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/offreFormation/70820/niveau/12/planningExamens HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 1264
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:21 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/niveau/12/periodes",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53545,
+        "times": {
+            "start": "2024-02-09T22:20:21.326+01:00",
+            "requestBegin": "2024-02-09T22:20:21.342+01:00",
+            "requestComplete": "2024-02-09T22:20:21.344+01:00",
+            "responseBegin": "2024-02-09T22:20:21.378+01:00",
+            "end": "2024-02-09T22:20:21.379+01:00"
+        },
+        "durations": {
+            "total": 37,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 2,
+            "response": 1,
+            "latency": 34
+        },
+        "speeds": {
+            "overall": 33729,
+            "request": 276500,
+            "response": 695000
+        },
+        "totalSize": 1248,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 553,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/niveau/12/periodes HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 695
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:21 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/niveau/undefined/periodes",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53539,
+        "times": {
+            "start": "2024-02-09T22:20:21.326+01:00",
+            "requestBegin": "2024-02-09T22:20:21.342+01:00",
+            "requestComplete": "2024-02-09T22:20:21.343+01:00",
+            "responseBegin": "2024-02-09T22:20:21.374+01:00",
+            "end": "2024-02-09T22:20:21.377+01:00"
+        },
+        "durations": {
+            "total": 35,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 1,
+            "response": 3,
+            "latency": 31
+        },
+        "speeds": {
+            "overall": 16000,
+            "request": 560000,
+            "response": 0
+        },
+        "totalSize": 560,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 560,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/niveau/undefined/periodes HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 403,
+            "sizes": {
+                "headers": 0,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 403 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:20 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/offreFormation/undefined/niveau/undefined/planningExamens",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53541,
+        "times": {
+            "start": "2024-02-09T22:20:21.327+01:00",
+            "requestBegin": "2024-02-09T22:20:21.342+01:00",
+            "requestComplete": "2024-02-09T22:20:21.344+01:00",
+            "responseBegin": "2024-02-09T22:20:21.399+01:00",
+            "end": "2024-02-09T22:20:21.401+01:00"
+        },
+        "durations": {
+            "total": 59,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 2,
+            "response": 2,
+            "latency": 55
+        },
+        "speeds": {
+            "overall": 10033,
+            "request": 296000,
+            "response": 0
+        },
+        "totalSize": 592,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 592,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/offreFormation/undefined/niveau/undefined/planningExamens HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 403,
+            "sizes": {
+                "headers": 0,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 403 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:21 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "status": "COMPLETE",
+        "method": "GET",
+        "protocolVersion": "HTTP/1.1",
+        "scheme": "https",
+        "host": "progres.mesrs.dz",
+        "actualPort": 443,
+        "path": "/api/infos/controleContinue/dia/12308149/notesCC",
+        "query": null,
+        "tunnel": false,
+        "keptAlive": true,
+        "webSocket": false,
+        "remoteAddress": "progres.mesrs.dz/41.111.186.34",
+        "clientAddress": "/127.0.0.1",
+        "clientPort": 53539,
+        "times": {
+            "start": "2024-02-09T22:20:24.464+01:00",
+            "requestBegin": "2024-02-09T22:20:24.467+01:00",
+            "requestComplete": "2024-02-09T22:20:24.471+01:00",
+            "responseBegin": "2024-02-09T22:20:24.542+01:00",
+            "end": "2024-02-09T22:20:24.543+01:00"
+        },
+        "durations": {
+            "total": 76,
+            "dns": null,
+            "connect": null,
+            "ssl": null,
+            "request": 4,
+            "response": 1,
+            "latency": 71
+        },
+        "speeds": {
+            "overall": 44526,
+            "request": 143000,
+            "response": 2812000
+        },
+        "totalSize": 3384,
+        "ssl": {
+            "protocol": "TLSv1.2",
+            "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        },
+        "request": {
+            "sizes": {
+                "headers": 572,
+                "body": 0
+            },
+            "mimeType": null,
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "GET /api/infos/controleContinue/dia/12308149/notesCC HTTP/1.1",
+                "headers": [
+                    {
+                        "name": "Host",
+                        "value": "progres.mesrs.dz"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    },
+                    {
+                        "name": "Accept",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "value": "webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                    },
+                    {
+                        "name": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAxOTIxNywiaWF0IjoxNzA3NTEzNjE3fQ.W69Zb16pMlzxojiRzjdrVdql4Th2iaPxnUMO6u8mKn8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "value": "gzip, deflate, br"
+                    }
+                ]
+            }
+        },
+        "response": {
+            "status": 200,
+            "sizes": {
+                "headers": 0,
+                "body": 2812
+            },
+            "mimeType": "application/json",
+            "charset": null,
+            "contentEncoding": null,
+            "header": {
+                "firstLine": "HTTP/1.1 200 ",
+                "headers": [
+                    {
+                        "name": "Vary",
+                        "value": "Origin"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Method"
+                    },
+                    {
+                        "name": "Vary",
+                        "value": "Access-Control-Request-Headers"
+                    },
+                    {
+                        "name": "X-Content-Type-Options",
+                        "value": "nosniff"
+                    },
+                    {
+                        "name": "X-XSS-Protection",
+                        "value": "0"
+                    },
+                    {
+                        "name": "Cache-Control",
+                        "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                        "name": "Pragma",
+                        "value": "no-cache"
+                    },
+                    {
+                        "name": "Expires",
+                        "value": "0"
+                    },
+                    {
+                        "name": "X-Frame-Options",
+                        "value": "DENY"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "name": "Transfer-Encoding",
+                        "value": "chunked"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "Fri, 09 Feb 2024 21:20:24 GMT"
+                    },
+                    {
+                        "name": "Strict-Transport-Security",
+                        "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                        "name": "Connection",
+                        "value": "keep-alive"
+                    }
+                ]
+            }
+        }
+    }
+]
