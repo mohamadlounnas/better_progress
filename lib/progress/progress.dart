@@ -170,13 +170,11 @@ class BetterProgress extends ChangeNotifier implements Progress {
     }
   }
 
-  // curl -H "Host: progres.mesrs.dz" -H "Accept: application/json, text/plain, */*" -H "User-Agent: webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0" -H "Accept-Language: en-GB,en-US;q=0.9,en;q=0.8" -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDA0ODU0MCwiaWF0IjoxNzA3NTQyOTQwfQ.qxYFy5w2qUAD-HTTFbNPniB7wkuOJ6eNXB8342OS0rI" --compressed "https://progres.mesrs.dz/api/infos/controleContinue/dia/12308149/notesCC"
   Future<List<ExamNote>> getExamNotes() async {
-    final response = await _client.get('https://progres.mesrs.dz/api/infos/planningSession/dia/12308149/noteExamens',
+    final response = await _client.get('https://progres.mesrs.dz/api/infos/planningSession/dia/$currentStudyYearId/noteExamens',
         options: Options(headers: {
           'Authorization': authResponse!.token,
-        })
-    );
+        }));
     if (response.statusCode == 200) {
       return (response.data as List).map((e) => ExamNote.fromJson(e)).toList();
     } else {
@@ -185,11 +183,10 @@ class BetterProgress extends ChangeNotifier implements Progress {
   }
 
   Future<List<CCNote>> getCCNotes() async {
-    final response = await _client.get('https://progres.mesrs.dz/api/infos/controleContinue/dia/12308149/notesCC',
+    final response = await _client.get('https://progres.mesrs.dz/api/infos/controleContinue/dia/$currentStudyYearId/notesCC',
         options: Options(headers: {
           'Authorization': authResponse!.token,
-        })
-    );
+        }));
     if (response.statusCode == 200) {
       return (response.data as List).map((e) => CCNote.fromJson(e)).toList();
     } else {
@@ -208,13 +205,15 @@ class BetterProgress extends ChangeNotifier implements Progress {
   List<ExamNote>? examNotes;
   List<CCNote>? ccNotes;
 
+  int? get currentStudyYearId => studyYears?.firstOrNull?.id;
+
   Future<void> loadStudyYear() async {
     final studyYearData = _prefs.getString('studyYear');
     if (studyYearData != null) {
       studyYears = (jsonDecode(studyYearData) as List).map((e) => StudyYear.fromJson(e)).toList();
       notifyListeners();
     } else {
-      studyYears = await getStudyYear();
+      studyYears = await getStudyYears();
       await _prefs.setString('studyYear', jsonEncode(studyYears));
       notifyListeners();
     }
@@ -245,12 +244,11 @@ class BetterProgress extends ChangeNotifier implements Progress {
   }
 
   // curl -H "Host: progres.mesrs.dz" -H "Accept: application/json, text/plain, */*" -H "User-Agent: webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0" -H "Accept-Language: en-GB,en-US;q=0.9,en;q=0.8" -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDA0MTUxOSwiaWF0IjoxNzA3NTM1OTE5fQ._6hZ9kVGzhB9NgKYM6gQxFGwY-mX87ZDXUMgCXTwf6w" --compressed "https://progres.mesrs.dz/api/infos/bac/2020/32027978/dias"
-  Future<List<StudyYear>> getStudyYear() async {
+  Future<List<StudyYear>> getStudyYears() async {
     final response = await _client.get('https://progres.mesrs.dz/api/infos/bac/${authResponse!.bacYear}/${authResponse!.bacId}/dias',
         options: Options(headers: {
           'Authorization': authResponse!.token,
-        })
-    );
+        }));
     if (response.statusCode == 200) {
       studyYears = List<Map<String, dynamic>>.from(response.data).map((e) => StudyYear.fromJson(e)).toList();
       return studyYears!;
@@ -259,7 +257,7 @@ class BetterProgress extends ChangeNotifier implements Progress {
     }
   }
 
-  Future<void> saveStudyYear() async {
+  Future<void> saveStudyYears() async {
     await _prefs.setString('studyYear', jsonEncode(studyYears));
   }
 
@@ -273,8 +271,7 @@ class BetterProgress extends ChangeNotifier implements Progress {
           'User-Agent': 'webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0',
           'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
           'Authorization': authResponse!.token,
-        })
-    );
+        }));
     if (response.statusCode == 200) {
       return AcademicYear.fromJson(response.data);
     } else {
@@ -344,7 +341,6 @@ class BetterProgress extends ChangeNotifier implements Progress {
     return _getAcademicYearStream().asBroadcastStream();
   }
 
-  // curl -H "Host: progres.mesrs.dz" -H "Accept: application/json, text/plain, */*" -H "User-Agent: webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0" -H "Accept-Language: en-GB,en-US;q=0.9,en;q=0.8" -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDAzNzQ5MywiaWF0IjoxNzA3NTMxODkzfQ.1Pbo9Sfiqb1sZYNOrjCKQBphfy6aKKYDqKFfhk7pWZE" --compressed "https://progres.mesrs.dz/api/infos/planningSession/dia/12308149/noteExamens"
   Stream<Result<List<ExamNote>>> _getExamNotesStream() async* {
     var result = Result<List<ExamNote>>(status: ResultStatus.loading);
 
@@ -360,7 +356,7 @@ class BetterProgress extends ChangeNotifier implements Progress {
     }
 
     try {
-      final response = await _client.get('https://progres.mesrs.dz/api/infos/planningSession/dia/12308149/noteExamens');
+      final response = await _client.get('https://progres.mesrs.dz/api/infos/planningSession/dia/$currentStudyYearId/noteExamens');
       if (response.statusCode == 200) {
         final examNotes = (response.data as List).map((e) => ExamNote.fromJson(e)).toList();
         result = result.copyWith(data: examNotes, status: ResultStatus.success, source: ResultSource.network);
@@ -394,8 +390,9 @@ class BetterProgress extends ChangeNotifier implements Progress {
       }
       await loadStudent();
       await loadAcademicYear();
-      // await loadStudyYear();
+      await loadStudyYear();
       await loadExamNotes();
+      await loadCCNotes();
       return authResponse!;
     } else {
       throw Exception('Error ${result.statusCode}');
@@ -432,7 +429,6 @@ class BetterProgress extends ChangeNotifier implements Progress {
 
   @override
   Future<void> logout() async {
-    await _prefs.clear();
     authResponse = null;
     student = null;
     studyYears = null;
