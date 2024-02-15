@@ -22,7 +22,7 @@ CCNote _$CCNoteFromJson(Map<String, dynamic> json) {
 mixin _$CCNote {
   int get id => throw _privateConstructorUsedError;
   double? get note => throw _privateConstructorUsedError;
-  bool get absent => throw _privateConstructorUsedError;
+  bool? get absent => throw _privateConstructorUsedError;
   String get llPeriode => throw _privateConstructorUsedError;
   String get llPeriodeAr => throw _privateConstructorUsedError;
   String get apCode => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $CCNoteCopyWith<$Res> {
   $Res call(
       {int id,
       double? note,
-      bool absent,
+      bool? absent,
       String llPeriode,
       String llPeriodeAr,
       String apCode,
@@ -65,7 +65,7 @@ class _$CCNoteCopyWithImpl<$Res, $Val extends CCNote>
   $Res call({
     Object? id = null,
     Object? note = freezed,
-    Object? absent = null,
+    Object? absent = freezed,
     Object? llPeriode = null,
     Object? llPeriodeAr = null,
     Object? apCode = null,
@@ -81,10 +81,10 @@ class _$CCNoteCopyWithImpl<$Res, $Val extends CCNote>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as double?,
-      absent: null == absent
+      absent: freezed == absent
           ? _value.absent
           : absent // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       llPeriode: null == llPeriode
           ? _value.llPeriode
           : llPeriode // ignore: cast_nullable_to_non_nullable
@@ -119,7 +119,7 @@ abstract class _$$CCNoteImplCopyWith<$Res> implements $CCNoteCopyWith<$Res> {
   $Res call(
       {int id,
       double? note,
-      bool absent,
+      bool? absent,
       String llPeriode,
       String llPeriodeAr,
       String apCode,
@@ -140,7 +140,7 @@ class __$$CCNoteImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? note = freezed,
-    Object? absent = null,
+    Object? absent = freezed,
     Object? llPeriode = null,
     Object? llPeriodeAr = null,
     Object? apCode = null,
@@ -156,10 +156,10 @@ class __$$CCNoteImplCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as double?,
-      absent: null == absent
+      absent: freezed == absent
           ? _value.absent
           : absent // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       llPeriode: null == llPeriode
           ? _value.llPeriode
           : llPeriode // ignore: cast_nullable_to_non_nullable
@@ -190,7 +190,7 @@ class _$CCNoteImpl extends _CCNote {
   const _$CCNoteImpl(
       {required this.id,
       this.note,
-      required this.absent,
+      this.absent,
       required this.llPeriode,
       required this.llPeriodeAr,
       required this.apCode,
@@ -206,7 +206,7 @@ class _$CCNoteImpl extends _CCNote {
   @override
   final double? note;
   @override
-  final bool absent;
+  final bool? absent;
   @override
   final String llPeriode;
   @override
@@ -275,7 +275,7 @@ abstract class _CCNote extends CCNote {
   const factory _CCNote(
       {required final int id,
       final double? note,
-      required final bool absent,
+      final bool? absent,
       required final String llPeriode,
       required final String llPeriodeAr,
       required final String apCode,
@@ -290,7 +290,7 @@ abstract class _CCNote extends CCNote {
   @override
   double? get note;
   @override
-  bool get absent;
+  bool? get absent;
   @override
   String get llPeriode;
   @override

@@ -3,23 +3,26 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:better_progress/view/products.dart';
+import 'package:dio/dio.dart';
+import 'package:recase/recase.dart';
+import 'package:mime/mime.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:image/image.dart' as img;
+import 'package:lib/lib.dart';
+import 'package:motif/motif.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
 import 'package:better_progress/view/auth.dart';
 import 'package:better_progress/widgets/app_container.dart';
 import 'package:better_progress/widgets/app_logo.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:lib/lib.dart';
-import 'package:motif/motif.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 import 'progress/models/cc_note.dart';
 import 'progress/models/exam_note.dart';
 import 'progress/progress.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:easy_image_viewer/easy_image_viewer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,8 +30,18 @@ void main() async {
   runApp(const BetterProgressApp());
 }
 
-class BetterProgressApp extends StatelessWidget {
+class BetterProgressApp extends StatefulWidget {
   const BetterProgressApp({Key? key}) : super(key: key);
+
+  @override
+  State<BetterProgressApp> createState() => _BetterProgressAppState();
+}
+
+class _BetterProgressAppState extends State<BetterProgressApp> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +64,15 @@ class BetterProgressApp extends StatelessWidget {
           ),
         ),
       ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green, brightness: Brightness.dark),
+        listTileTheme: ListTileThemeData(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
+        ),
+      ),
+      themeMode: ThemeMode.system,
       home: const Home(),
     );
   }
@@ -64,54 +86,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Uint8List? phtoData;
+  int currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    loadPhoto();
-  }
-
-  void loadPhoto() async {
-    // tryLoad from cache
-    var prefs = await SharedPreferences.getInstance();
-    var photo = prefs.getString("photo:&${BetterProgress.instance.student?.id}"); // base64Encode
-    if (photo != null) {
-      setState(() {
-        phtoData = Uint8List.fromList(base64Decode(photo));
-      });
-      return;
-    }
-    var response = await Dio().get(
-      "https://progres.mesrs.dz/webfve/javax.faces.resource/dynamiccontent.properties.xhtml?ln=primefaces&v=12.0.0&e=12.0.0&pfdrid=99d1ffdd5e4bbddc75cb7695039032f&pfdrt=sc&url=2020%2F100000286001990004_PH_IMP.JPG&pfdrid_c=true",
-      options: Options(
-        headers: {
-          "Host": "progres.mesrs.dz",
-          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:122.0) Gecko/20100101 Firefox/122.0",
-          "Accept": "image/avif,image/webp,*/*",
-          "Accept-Language": "ar",
-          "Accept-Encoding": "gzip, deflate, br",
-          "Referer": "https://progres.mesrs.dz/webfve/pages/profil.xhtml",
-          "DNT": "1",
-          "Connection": "keep-alive",
-          "Cookie": "JSESSIONID=EC99C7D5DE48D726F5431849C0D764C5; webfve=34.0",
-          "Sec-Fetch-Dest": "image",
-          "Sec-Fetch-Mode": "no-cors",
-          "Sec-Fetch-Site": "same-origin",
-          "Pragma": "no-cache",
-          "Cache-Control": "no-cache",
-        },
-        responseType: ResponseType.bytes,
-      ),
-      // options: Options(
-      //
-      // ),
-    );
-    setState(() {
-      phtoData = Uint8List.fromList(response.data);
-    });
-    // save to cache
-    prefs.setString("photo:&${BetterProgress.instance.student?.id}", base64Encode(response.data));
   }
 
   @override
@@ -131,7 +110,7 @@ class _HomeState extends State<Home> {
                   child: Scaffold(
                     backgroundColor: Colors.transparent,
                     // appBar: ,
-                    body: SingleChildScrollView(
+                    body: currentIndex == 0? SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.all(8),
                         child: Column(
@@ -157,16 +136,18 @@ class _HomeState extends State<Home> {
                                   //  no padding
                                   mini: true,
                                   onPressed: () async {
-                                    showImageViewer(context, MemoryImage(phtoData!), onViewerDismissed: () {
-                                      print("dismissed");
-                                    });
+                                    if (BetterProgress.instance.photoData != null) {
+                                      showImageViewer(context, MemoryImage(BetterProgress.instance.photoData!), onViewerDismissed: () {
+                                        print("dismissed");
+                                      });
+                                    }
                                   },
                                   clipBehavior: Clip.antiAlias,
                                   elevation: 2,
                                   child:
                                       // BetterProgress.instance.student?.photo != null ? Image.network(BetterProgress.instance.student!.photoUrl!) :
                                       // use cached image network
-                                      BetterProgress.instance.student?.photo != null && phtoData != null
+                                      BetterProgress.instance.photoData != null
                                           // ? CachedNetworkImage(
                                           //     imageUrl: "https://progres.mesrs.dz/webfve/javax.faces.resource/dynamiccontent.properties.xhtml?ln=primefaces&v=12.0.0&e=12.0.0&pfdrid=99d1ffdd5e4bbddc75cb7695039032f&pfdrt=sc&url=2020%2F100000286001990004_PH_IMP.JPG&pfdrid_c=true",
                                           //     placeholder: (context, url) => const CircularProgressIndicator(),
@@ -178,7 +159,7 @@ class _HomeState extends State<Home> {
                                           //   )
                                           // :
                                           ? Image.memory(
-                                              phtoData!,
+                                              BetterProgress.instance.photoData!,
                                               fit: BoxFit.cover,
                                               width: 40,
                                               height: 40,
@@ -222,6 +203,7 @@ class _HomeState extends State<Home> {
                               ),
                               clipBehavior: Clip.antiAlias,
                               child: GPACalculator(
+                                key: UniqueKey(),
                                 ccNotes: BetterProgress.instance.ccNotes ?? [],
                                 notes: BetterProgress.instance.examNotes ?? [],
                               ),
@@ -236,36 +218,62 @@ class _HomeState extends State<Home> {
                                   print(e);
                                 }
                               },
-                              leading: const Icon(Icons.code),
                               // trailing phone call: 0657606315
-                              trailing: Column(
+                              title: Row(
+                                children: [
+                                  Expanded(child: 
+                                  Text(
+                                    'mohamadlounnas | © $copyRightYears Better Progress\nUSDB | All rights reserved.\nMIT License (but limited)',
+                                    style: TextStyle(
+                                      color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  ),
+                                  Column(
                                 children: [
                                   IconButton(
-                                    icon: const Icon(Icons.phone),
+                                    icon: const Icon(Icons.telegram),
                                     onPressed: () async {
                                       try {
-                                        await launchUrlString('tel:+213657606315');
+                                        await launchUrlString('https://t.me/+ADPIRJCCi7s1YzZk');
                                       } catch (e) {
                                         print(e);
                                       }
                                     },
                                   ),
-                                  // const Text('Call'),
+                                  const Text('Telegram', style: TextStyle(
+                                      fontSize: 12,
+                                    ),),
                                 ],
                               ),
-                              title: Text(
-                                'mohamadlounnas | © $copyRightYears Better Progress\nUSDB | All rights reserved.\nMIT License (but limited)',
-                                style: TextStyle(
-                                  color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
-                                  fontSize: 12,
-                                ),
+                                ],
                               ),
                             ),
-                            const SizedBox(height: 8),
+                            const SizedBox(height: 24),
                           ],
                         ),
                       ),
-                    ),
+                    ): ProductsView(),
+                    // tow buttons
+                    // bottomNavigationBar: BottomNavigationBar(
+                    //   currentIndex: currentIndex,
+                    //   items: const [
+                    //     BottomNavigationBarItem(
+                    //       icon: Icon(Icons.home),
+                    //       label: 'Progress',
+                    //     ),
+                    //     BottomNavigationBarItem(
+                    //       icon: Icon(Icons.settings),
+                    //       label: 'Products',
+                    //     ),
+                    //   ],
+                    //   onTap: (index) {
+                    //     setState(() {
+                    //       currentIndex = index;
+                    //     });
+                    //   },
+                    // ),
                   ),
                 ),
               ],
@@ -299,17 +307,17 @@ class GPACalculator extends StatefulWidget {
 class _GPACalculatorState extends State<GPACalculator> {
   late final notes = widget.notes;
   late final ccNotes = widget.ccNotes;
-  Map<String, TextEditingController> _controllers = {};
-  Map<String, TextEditingController> _ccControllers = {};
+  final Map<String, TextEditingController> _controllers = {};
+  final Map<String, TextEditingController> _ccControllers = {};
 
   @override
   void initState() {
     super.initState();
     for (var note in notes) {
-      _controllers[note.mcLibelleFr] = TextEditingController(text: note.noteExamen?.toString());
+      _controllers[note.mcLibelleFr.toLowerCase()] = TextEditingController(text: note.noteExamen?.toString());
     }
     for (var note in ccNotes) {
-      _ccControllers[note.rattachementMcMcLibelleFr] = TextEditingController(text: note.note?.toString());
+      _ccControllers[note.rattachementMcMcLibelleFr.toLowerCase()] = TextEditingController(text: note.note?.toString());
     }
   }
 
@@ -337,13 +345,13 @@ class _GPACalculatorState extends State<GPACalculator> {
   // }
 
   num getCoefficient(String name) {
-    return notes.firstWhere((element) => element.mcLibelleFr == name).rattachementMcCoefficient;
+    return notes.firstWhere((element) => element.mcLibelleFr.toLowerCase() == name.toLowerCase()).rattachementMcCoefficient;
   }
 
   int get totalCoefficient {
     var totalCoefficient = 0;
     for (var note in notes) {
-      var value = getTotalOf(note.mcLibelleFr);
+      var value = getTotalOf(note.mcLibelleFr.toLowerCase());
       if (value != null) {
         totalCoefficient += note.rattachementMcCoefficient.toInt();
       }
@@ -395,8 +403,8 @@ class _GPACalculatorState extends State<GPACalculator> {
 
   // showOnlyTPOf
   bool showOnlyTPOf(String name) {
-    var ccNote = ccNotes.where((element) => element.rattachementMcMcLibelleFr == name).firstOrNull;
-    var note = notes.where((element) => element.mcLibelleFr == name).firstOrNull;
+    var ccNote = ccNotes.where((element) => element.rattachementMcMcLibelleFr.toLowerCase() == name.toLowerCase()).firstOrNull;
+    var note = notes.where((element) => element.mcLibelleFr.toLowerCase() == name.toLowerCase()).firstOrNull;
     if (ccNote?.apCode == "TP" && note?.noteExamen == null) {
       return true;
     }
@@ -418,30 +426,24 @@ class _GPACalculatorState extends State<GPACalculator> {
               width: double.infinity,
               child: Stack(
                 children: [
-                  if (false)
-                    Center(
-                        child: Column(
+                  Positioned.fill(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.school,
-                          color: Colors.white,
-                          size: 50,
-                        ),
-                        // niveauLibelleLongLt
-                        Text(
-                          '${BetterProgress.instance.studyYears?.first.niveauCode}',
-                          style: TextStyle(
-                            // color: Colors.white,
-                            fontSize: 20,
-                            // outlined paint
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = 0.5
-                              ..color = Colors.white,
-                          ),
-                        ),
+                        BetterProgress.instance.universityLogoData != null
+                            ? Image.memory(
+                                BetterProgress.instance.universityLogoData!,
+                                fit: BoxFit.cover,
+                                width: 50,
+                                height: 50,
+                                color: Colors.white,
+                              )
+                            : const Icon(Icons.person),
+                                                          Text('${BetterProgress.instance.studyYears?.first.llEtablissementArabe}', style: TextStyle(color: Colors.white, fontSize: 10)),
+
                       ],
-                    )),
+                    ),
+                  ),
                   Row(
                     children: [
                       Row(
@@ -462,7 +464,6 @@ class _GPACalculatorState extends State<GPACalculator> {
                                       child: Text('${BetterProgress.instance.student?.age} سنة', style: TextStyle(color: Colors.green, fontSize: 8))),
                                 ],
                               ),
-                              Text('${BetterProgress.instance.studyYears?.first.llEtablissementArabe}', style: TextStyle(color: Colors.white, fontSize: 10)),
                               Text('${BetterProgress.instance.studyYears?.first.niveauLibelleLongAr}', style: TextStyle(color: Colors.white, fontSize: 10)),
                               Text('${BetterProgress.instance.studyYears?.first.ofLlSpecialiteArabe}', style: TextStyle(color: Colors.white, fontSize: 10)),
                             ],
@@ -525,10 +526,21 @@ class _GPACalculatorState extends State<GPACalculator> {
                           Row(
                             children: [
                               //
-                              if (!showOnlyTPOf(note.mcLibelleFr))
+                              if (!showOnlyTPOf(note.mcLibelleFr.toLowerCase()))
                                 Expanded(
-                                  child: TextField(
-                                    controller: _controllers[note.mcLibelleFr],
+                                  child: TextFormField(
+                                    // validator
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'required';
+                                      }
+                                      if (double.tryParse(value) == null) {
+                                        return 'must be a number';
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode: AutovalidateMode.always,
+                                    controller: _controllers[note.mcLibelleFr.toLowerCase()],
                                     // numbers with comma
                                     keyboardType: TextInputType.numberWithOptions(decimal: true),
                                     decoration: InputDecoration(
@@ -543,19 +555,29 @@ class _GPACalculatorState extends State<GPACalculator> {
                                     },
                                   ),
                                 ),
-                              // if have CC note with same name
-                              if (ccNotes.any((element) => element.rattachementMcMcLibelleFr == note.mcLibelleFr)) ...[
-                                if (!showOnlyTPOf(note.mcLibelleFr)) const SizedBox(width: 8),
+                              // if have CC note with same nam  e
+                              if (ccNotes.any((element) => element.rattachementMcMcLibelleFr.toLowerCase() == note.mcLibelleFr.toLowerCase())) ...[
+                                if (!showOnlyTPOf(note.mcLibelleFr.toLowerCase())) const SizedBox(width: 8),
                                 Expanded(
-                                  child: TextField(
-                                    controller: _ccControllers[ccNotes.firstWhere((element) => element.rattachementMcMcLibelleFr == note.mcLibelleFr).rattachementMcMcLibelleFr],
+                                  child: TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'required';
+                                      }
+                                      if (double.tryParse(value) == null) {
+                                        return 'must be a number';
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode: AutovalidateMode.always,
+                                    controller: _ccControllers[ccNotes.firstWhere((element) => element.rattachementMcMcLibelleFr.toLowerCase() == note.mcLibelleFr.toLowerCase()).rattachementMcMcLibelleFr.toLowerCase()],
                                     keyboardType: TextInputType.numberWithOptions(decimal: true),
                                     decoration: InputDecoration(
                                       isDense: true,
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(12),
                                       ),
-                                      labelText: 'CC',
+                                      labelText: ccNotes.firstWhere((element) => element.rattachementMcMcLibelleFr.toLowerCase() == note.mcLibelleFr.toLowerCase()).apCode,
                                     ),
                                     onChanged: (value) {
                                       setState(() {});
@@ -567,19 +589,19 @@ class _GPACalculatorState extends State<GPACalculator> {
                           ),
                           Text("×" + note.rattachementMcCoefficient.toInt().toString()),
                           Text(
-                            (getTotalOf(note.mcLibelleFr)?.toStringAsFixed(2)).toString(),
+                            (getTotalOf(note.mcLibelleFr.toLowerCase())?.toStringAsFixed(2)).toString(),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: getTotalOf(note.mcLibelleFr) == null
+                              color: getTotalOf(note.mcLibelleFr.toLowerCase()) == null
                                   ? null
-                                  : getTotalOf(note.mcLibelleFr)! < 10
+                                  : getTotalOf(note.mcLibelleFr.toLowerCase())! < 10
                                       ? Colors.red
                                       : Colors.green,
                             ),
                           ),
                         ],
                       ),
-                      subtitle: Text(note.mcLibelleFr.toString()),
+                      subtitle: Text(note.mcLibelleFr),
                     ),
                   ),
               ],
@@ -589,4 +611,38 @@ class _GPACalculatorState extends State<GPACalculator> {
       ],
     );
   }
+
+  // String getDescOf(String? mcLibelleFr) {
+  //   try {
+  //     // convert to title case (exmple: "Action Module Of The Year")
+  //     var title = mcLibelleFr!.titleCase;
+  //     // replace ’ by space
+  //     title = title.replaceAll("’", " ").replaceAll("'", " ").replaceAll("-", " ").replaceAll("/", " ");
+  //     // remove any double space
+  //     title = title.replaceAll(RegExp(r"\s{2,}"), " ");
+  //     // remove any word containing one character
+  //     title = title.replaceAll(RegExp(r"\b\w\b"), "").trim().toLowerCase();
+  //     // is TP (ifn contains "travaux pratiques")
+  //     bool isTP = title.contains("travaux pratiques");
+  //     // remove "travaux pratiques" from title
+  //     title = title.replaceAll("travaux pratiques", "").trim();
+  //     // remove french links "de", "du", "des", "d'", "le", "la", "les", "l'
+  //     title = title.replaceAll(RegExp(r"\b(de|du|des|d'|le|la|les|l')\b"), "").trim();
+
+  //     if (isTP) {
+  //       var data = title.split(" ");
+  //       title = "";
+  //       for (var i = 0; i < data.length; i++) {
+  //         if (data[i].length > 0) {
+  //           title += data[i][0].toUpperCase();
+  //         }
+  //       }
+
+  //       return "TP $title";
+  //     }
+  //     return title;
+  //   } catch (e) {
+  //     return mcLibelleFr ?? "XX";
+  //   }
+  // }
 }

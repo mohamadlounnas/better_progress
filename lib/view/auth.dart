@@ -117,11 +117,18 @@ class _LoginState extends State<_Login> {
                                   menuChildren: [
                                     for (var entry in BetterProgress.instance.savedCredentials.entries)
                                       MenuItemButton(
-                                        child: Text(entry.key),
+                                        leadingIcon: const Icon(Icons.person_outline_outlined),
                                         onPressed: () {
                                           _usernameController.text = entry.key;
-                                          _passwordController.text = entry.value;
+                                          _passwordController.text = entry.value['password'] ?? '';
                                         },
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(entry.key),
+                                            Text(entry.value['name']!, style: Theme.of(context).textTheme.bodySmall),
+                                          ],
+                                        ),
                                       ),
                                   ],
                                 ),

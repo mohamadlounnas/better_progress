@@ -1,4 +1,4 @@
-package com.example.better_progress
+package dev.physia.bp
 
 import io.flutter.embedding.android.FlutterActivity
 

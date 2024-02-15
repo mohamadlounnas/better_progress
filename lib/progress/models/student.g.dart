@@ -17,58 +17,68 @@ const StudentSchema = CollectionSchema(
   name: r'Student',
   id: -252783119861727542,
   properties: {
-    r'dateNaissance': PropertySchema(
+    r'age': PropertySchema(
       id: 0,
+      name: r'age',
+      type: IsarType.long,
+    ),
+    r'dateNaissance': PropertySchema(
+      id: 1,
       name: r'dateNaissance',
       type: IsarType.string,
     ),
     r'email': PropertySchema(
-      id: 1,
+      id: 2,
       name: r'email',
       type: IsarType.string,
     ),
     r'id': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'id',
       type: IsarType.long,
     ),
     r'identifiant': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'identifiant',
       type: IsarType.string,
     ),
     r'lieuNaissance': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'lieuNaissance',
       type: IsarType.string,
     ),
     r'lieuNaissanceArabe': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'lieuNaissanceArabe',
       type: IsarType.string,
     ),
     r'nomArabe': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'nomArabe',
       type: IsarType.string,
     ),
     r'nomLatin': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'nomLatin',
       type: IsarType.string,
     ),
     r'photo': PropertySchema(
-      id: 8,
+      id: 9,
       name: r'photo',
       type: IsarType.string,
     ),
+    r'photoUrl': PropertySchema(
+      id: 10,
+      name: r'photoUrl',
+      type: IsarType.string,
+    ),
     r'prenomArabe': PropertySchema(
-      id: 9,
+      id: 11,
       name: r'prenomArabe',
       type: IsarType.string,
     ),
     r'prenomLatin': PropertySchema(
-      id: 10,
+      id: 12,
       name: r'prenomLatin',
       type: IsarType.string,
     )
@@ -111,6 +121,12 @@ int _studentEstimateSize(
       bytesCount += 3 + value.length * 3;
     }
   }
+  {
+    final value = object.photoUrl;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   bytesCount += 3 + object.prenomArabe.length * 3;
   bytesCount += 3 + object.prenomLatin.length * 3;
   return bytesCount;
@@ -122,17 +138,19 @@ void _studentSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeString(offsets[0], object.dateNaissance);
-  writer.writeString(offsets[1], object.email);
-  writer.writeLong(offsets[2], object.id);
-  writer.writeString(offsets[3], object.identifiant);
-  writer.writeString(offsets[4], object.lieuNaissance);
-  writer.writeString(offsets[5], object.lieuNaissanceArabe);
-  writer.writeString(offsets[6], object.nomArabe);
-  writer.writeString(offsets[7], object.nomLatin);
-  writer.writeString(offsets[8], object.photo);
-  writer.writeString(offsets[9], object.prenomArabe);
-  writer.writeString(offsets[10], object.prenomLatin);
+  writer.writeLong(offsets[0], object.age);
+  writer.writeString(offsets[1], object.dateNaissance);
+  writer.writeString(offsets[2], object.email);
+  writer.writeLong(offsets[3], object.id);
+  writer.writeString(offsets[4], object.identifiant);
+  writer.writeString(offsets[5], object.lieuNaissance);
+  writer.writeString(offsets[6], object.lieuNaissanceArabe);
+  writer.writeString(offsets[7], object.nomArabe);
+  writer.writeString(offsets[8], object.nomLatin);
+  writer.writeString(offsets[9], object.photo);
+  writer.writeString(offsets[10], object.photoUrl);
+  writer.writeString(offsets[11], object.prenomArabe);
+  writer.writeString(offsets[12], object.prenomLatin);
 }
 
 Student _studentDeserialize(
@@ -142,17 +160,17 @@ Student _studentDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = Student(
-    dateNaissance: reader.readString(offsets[0]),
-    email: reader.readStringOrNull(offsets[1]),
-    id: reader.readLong(offsets[2]),
-    identifiant: reader.readString(offsets[3]),
-    lieuNaissance: reader.readString(offsets[4]),
-    lieuNaissanceArabe: reader.readString(offsets[5]),
-    nomArabe: reader.readString(offsets[6]),
-    nomLatin: reader.readString(offsets[7]),
-    photo: reader.readStringOrNull(offsets[8]),
-    prenomArabe: reader.readString(offsets[9]),
-    prenomLatin: reader.readString(offsets[10]),
+    dateNaissance: reader.readString(offsets[1]),
+    email: reader.readStringOrNull(offsets[2]),
+    id: reader.readLong(offsets[3]),
+    identifiant: reader.readString(offsets[4]),
+    lieuNaissance: reader.readString(offsets[5]),
+    lieuNaissanceArabe: reader.readString(offsets[6]),
+    nomArabe: reader.readString(offsets[7]),
+    nomLatin: reader.readString(offsets[8]),
+    photo: reader.readStringOrNull(offsets[9]),
+    prenomArabe: reader.readString(offsets[11]),
+    prenomLatin: reader.readString(offsets[12]),
   );
   return object;
 }
@@ -165,13 +183,13 @@ P _studentDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readString(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 1:
-      return (reader.readStringOrNull(offset)) as P;
-    case 2:
-      return (reader.readLong(offset)) as P;
-    case 3:
       return (reader.readString(offset)) as P;
+    case 2:
+      return (reader.readStringOrNull(offset)) as P;
+    case 3:
+      return (reader.readLong(offset)) as P;
     case 4:
       return (reader.readString(offset)) as P;
     case 5:
@@ -181,10 +199,14 @@ P _studentDeserializeProp<P>(
     case 7:
       return (reader.readString(offset)) as P;
     case 8:
-      return (reader.readStringOrNull(offset)) as P;
-    case 9:
       return (reader.readString(offset)) as P;
+    case 9:
+      return (reader.readStringOrNull(offset)) as P;
     case 10:
+      return (reader.readStringOrNull(offset)) as P;
+    case 11:
+      return (reader.readString(offset)) as P;
+    case 12:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -278,6 +300,74 @@ extension StudentQueryWhere on QueryBuilder<Student, Student, QWhereClause> {
 
 extension StudentQueryFilter
     on QueryBuilder<Student, Student, QFilterCondition> {
+  QueryBuilder<Student, Student, QAfterFilterCondition> ageIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'age',
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> ageIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'age',
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> ageEqualTo(int? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'age',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> ageGreaterThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'age',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> ageLessThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'age',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> ageBetween(
+    int? lower,
+    int? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'age',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
   QueryBuilder<Student, Student, QAfterFilterCondition> dateNaissanceEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -1465,6 +1555,152 @@ extension StudentQueryFilter
     });
   }
 
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'photoUrl',
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'photoUrl',
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'photoUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'photoUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'photoUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'photoUrl',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'photoUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'photoUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlContains(
+      String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'photoUrl',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'photoUrl',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'photoUrl',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterFilterCondition> photoUrlIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'photoUrl',
+        value: '',
+      ));
+    });
+  }
+
   QueryBuilder<Student, Student, QAfterFilterCondition> prenomArabeEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -1735,6 +1971,18 @@ extension StudentQueryLinks
     on QueryBuilder<Student, Student, QFilterCondition> {}
 
 extension StudentQuerySortBy on QueryBuilder<Student, Student, QSortBy> {
+  QueryBuilder<Student, Student, QAfterSortBy> sortByAge() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'age', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterSortBy> sortByAgeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'age', Sort.desc);
+    });
+  }
+
   QueryBuilder<Student, Student, QAfterSortBy> sortByDateNaissance() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateNaissance', Sort.asc);
@@ -1843,6 +2091,18 @@ extension StudentQuerySortBy on QueryBuilder<Student, Student, QSortBy> {
     });
   }
 
+  QueryBuilder<Student, Student, QAfterSortBy> sortByPhotoUrl() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'photoUrl', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterSortBy> sortByPhotoUrlDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'photoUrl', Sort.desc);
+    });
+  }
+
   QueryBuilder<Student, Student, QAfterSortBy> sortByPrenomArabe() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'prenomArabe', Sort.asc);
@@ -1870,6 +2130,18 @@ extension StudentQuerySortBy on QueryBuilder<Student, Student, QSortBy> {
 
 extension StudentQuerySortThenBy
     on QueryBuilder<Student, Student, QSortThenBy> {
+  QueryBuilder<Student, Student, QAfterSortBy> thenByAge() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'age', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterSortBy> thenByAgeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'age', Sort.desc);
+    });
+  }
+
   QueryBuilder<Student, Student, QAfterSortBy> thenByDateNaissance() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dateNaissance', Sort.asc);
@@ -1990,6 +2262,18 @@ extension StudentQuerySortThenBy
     });
   }
 
+  QueryBuilder<Student, Student, QAfterSortBy> thenByPhotoUrl() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'photoUrl', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Student, Student, QAfterSortBy> thenByPhotoUrlDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'photoUrl', Sort.desc);
+    });
+  }
+
   QueryBuilder<Student, Student, QAfterSortBy> thenByPrenomArabe() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'prenomArabe', Sort.asc);
@@ -2017,6 +2301,12 @@ extension StudentQuerySortThenBy
 
 extension StudentQueryWhereDistinct
     on QueryBuilder<Student, Student, QDistinct> {
+  QueryBuilder<Student, Student, QDistinct> distinctByAge() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'age');
+    });
+  }
+
   QueryBuilder<Student, Student, QDistinct> distinctByDateNaissance(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2082,6 +2372,13 @@ extension StudentQueryWhereDistinct
     });
   }
 
+  QueryBuilder<Student, Student, QDistinct> distinctByPhotoUrl(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'photoUrl', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<Student, Student, QDistinct> distinctByPrenomArabe(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2102,6 +2399,12 @@ extension StudentQueryProperty
   QueryBuilder<Student, int, QQueryOperations> id_Property() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id_');
+    });
+  }
+
+  QueryBuilder<Student, int?, QQueryOperations> ageProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'age');
     });
   }
 
@@ -2156,6 +2459,12 @@ extension StudentQueryProperty
   QueryBuilder<Student, String?, QQueryOperations> photoProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'photo');
+    });
+  }
+
+  QueryBuilder<Student, String?, QQueryOperations> photoUrlProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'photoUrl');
     });
   }
 

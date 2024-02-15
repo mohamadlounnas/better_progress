@@ -52,6 +52,9 @@ dependencies:
   lib: ^0.0.3
   url_launcher: ^6.2.4
   easy_image_viewer: ^1.4.1
+  flutter_cache_manager: ^3.3.1
+  recase: ^4.1.0
+  timeago: ^3.6.1
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +86,7 @@ flutter:
   assets:
     - assets/walpapers/
     - assets/logo/
+    # - assets/top.json
     
 
 

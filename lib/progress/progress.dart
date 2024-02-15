@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:better_progress/progress/models/student.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:dio/dio.dart';
 import 'package:isar/isar.dart';
@@ -101,11 +102,6 @@ class BetterProgress extends ChangeNotifier implements Progress {
         ),
       ),
     );
-
-    // headers
-    // _client.options.headers['Host'] = 'progres.mesrs.dz';
-    // _client.options.headers['Accept'] = 'application/json, text/plain, */*';
-    // _client.options.headers['User-Agent'] = 'webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0';
     if (authResponse != null) {
       _client.options.headers['Authorization'] = authResponse!.token;
     }
@@ -115,6 +111,37 @@ class BetterProgress extends ChangeNotifier implements Progress {
     _client.options.connectTimeout = const Duration(seconds: 10);
     _client.options.receiveTimeout = const Duration(seconds: 10);
   }
+
+  Future<void> loadPhoto() async {
+    var file = await DefaultCacheManager().getSingleFile(
+      "https://progres.mesrs.dz/api/infos/image/${BetterProgress.instance.authResponse?.bacYear}/${BetterProgress.instance.authResponse?.bacId}",
+      headers: {
+        "Authorization": BetterProgress.instance.authResponse!.token,
+      },
+    );
+    //
+    var fileBytes = await file.readAsBytes();
+    var string = String.fromCharCodes(fileBytes);
+    photoData = base64Decode(string);
+    notifyListeners();
+  }
+
+  Future<void> loadUniversityLogo() async {
+    var file = await DefaultCacheManager().getSingleFile(
+      "https://progres.mesrs.dz/api/infos/logoEtablissement/${authResponse?.etablissementId}",
+      headers: {
+        "Authorization": BetterProgress.instance.authResponse!.token,
+      },
+    );
+    //
+    var fileBytes = await file.readAsBytes();
+    var string = String.fromCharCodes(fileBytes);
+    universityLogoData = base64Decode(string);
+    notifyListeners();
+  }
+
+  Uint8List? photoData;
+  Uint8List? universityLogoData;
 
   /// the user data
   AuthResponse? authResponse;
@@ -128,45 +155,66 @@ class BetterProgress extends ChangeNotifier implements Progress {
   /// check if there is a user authenticated (save in isar)
   /// anneeAcademiqueId
   Future<void> initAuth() async {
-    await loadAuthResponse();
     if (authResponse != null) {
       try {
-        await loadStudent();
-        await loadAcademicYear();
-        await loadStudyYear();
-        await loadExamNotes();
-        await loadCCNotes();
+        await loadStudent(offline: true);
+        await loadAcademicYear(offline: true);
+        await loadStudyYear(offline: true);
+        await loadExamNotes(offline: true);
+        await loadCCNotes(offline: true);
+
+        await loadStudent(offline: false);
+        await loadAcademicYear(offline: false);
+        await loadStudyYear(offline: false);
+        await loadExamNotes(offline: false);
+        await loadCCNotes(offline: false);
+
       } on DioException catch (e) {
         if (e.response?.statusCode == 401) {
           await logout();
         }
       } catch (e) {
-        print(e);
+        // print(e);
       }
+    }
+    try {
+      await loadPhoto();
+      await loadUniversityLogo();
+    } catch (e) {
+      // print(e);
     }
   }
 
-  Future<void> loadExamNotes() async {
-    final examNotesData = _prefs.getString('examNotes');
+  Future<void> loadExamNotes({bool offline = false}) async {
+    final examNotesData = getString('examNotes');
     if (examNotesData != null) {
       examNotes = (jsonDecode(examNotesData) as List).map((e) => ExamNote.fromJson(e)).toList();
       notifyListeners();
-    } else {
+      if (offline) return;
+    }
+    try {
       examNotes = await getExamNotes();
-      await _prefs.setString('examNotes', jsonEncode(examNotes));
+      await setString('examNotes', jsonEncode(examNotes));
       notifyListeners();
+    } catch (e) {
+      // print(e);
     }
   }
 
-  Future<void> loadCCNotes() async {
-    final ccNotesData = _prefs.getString('ccNotes');
+  Future<void> loadCCNotes({bool offline = false}) async {
+    final ccNotesData = getString('ccNotes');
     if (ccNotesData != null) {
       ccNotes = (jsonDecode(ccNotesData) as List).map((e) => CCNote.fromJson(e)).toList();
       notifyListeners();
-    } else {
+      if (offline) return;
+    }
+
+    try {
       ccNotes = await getCCNotes();
-      await _prefs.setString('ccNotes', jsonEncode(ccNotes));
+      await setString('ccNotes', jsonEncode(ccNotes));
       notifyListeners();
+    } catch (e) {
+      // print(e);
     }
   }
 
@@ -194,52 +242,64 @@ class BetterProgress extends ChangeNotifier implements Progress {
     }
   }
 
-  Future<void> saveExamNotes() async {
-    await _prefs.setString('examNotes', jsonEncode(examNotes));
-  }
-
-  Future<void> saveCCNotes() async {
-    await _prefs.setString('ccNotes', jsonEncode(ccNotes));
-  }
-
   List<ExamNote>? examNotes;
   List<CCNote>? ccNotes;
 
   int? get currentStudyYearId => studyYears?.firstOrNull?.id;
 
-  Future<void> loadStudyYear() async {
-    final studyYearData = _prefs.getString('studyYear');
+  Future<void> loadStudyYear({bool offline = false}) async {
+    final studyYearData = getString('studyYear');
     if (studyYearData != null) {
       studyYears = (jsonDecode(studyYearData) as List).map((e) => StudyYear.fromJson(e)).toList();
       notifyListeners();
-    } else {
+      if (offline) return;
+    }
+    try {
       studyYears = await getStudyYears();
-      await _prefs.setString('studyYear', jsonEncode(studyYears));
+      await setString('studyYear', jsonEncode(studyYears));
       notifyListeners();
+    } catch (e) {
+      // print(e);
     }
   }
 
-  Future<void> loadAcademicYear() async {
-    final academicYearData = _prefs.getString('academicYear');
+  Future<void> loadAcademicYear({bool offline = false}) async {
+    final academicYearData = getString('academicYear');
     if (academicYearData != null) {
       academicYear = AcademicYear.fromJson(jsonDecode(academicYearData));
       notifyListeners();
-    } else {
+      if (offline) return;
+    }
+    try {
       academicYear = await getAcademicYear();
-      await _prefs.setString('academicYear', jsonEncode(academicYear));
+      await setString('academicYear', jsonEncode(academicYear));
       notifyListeners();
+    } catch (e) {
+      // print(e);
     }
   }
 
-  Future<void> loadStudent() async {
-    final studentData = _prefs.getString('student');
+  String? getString(String key) {
+    return _prefs.getString("${currentBacId}_$key");
+  }
+
+  Future<void> setString(String key, String value) async {
+    _prefs.setString("${currentBacId}_$key", value);
+  }
+
+  Future<void> loadStudent({bool offline = false}) async {
+    final studentData = getString('student');
     if (studentData != null) {
       student = Student.fromJson(jsonDecode(studentData));
       notifyListeners();
-    } else {
+      if (offline) return;
+    }
+    try {
       student = await getStudent();
       await saveStudent();
       notifyListeners();
+    } catch (e) {
+      // print(e);
     }
   }
 
@@ -255,10 +315,6 @@ class BetterProgress extends ChangeNotifier implements Progress {
     } else {
       throw Exception('Error ${response.statusCode}');
     }
-  }
-
-  Future<void> saveStudyYears() async {
-    await _prefs.setString('studyYear', jsonEncode(studyYears));
   }
 
   AcademicYear? academicYear;
@@ -290,13 +346,13 @@ class BetterProgress extends ChangeNotifier implements Progress {
   }
 
   Future<void> saveStudent() async {
-    await _prefs.setString('student', jsonEncode(student!.toJson()));
+    await setString('student', jsonEncode(student!.toJson()));
   }
 
   Future<void> loadAuthResponse() async {
-    final token = _prefs.getString('authResponse');
+    final token = getString('authResponse');
     if (token != null) {
-      authResponse = AuthResponse.fromJson(jsonDecode(token));
+      await setAuthResponse(AuthResponse.fromJson(jsonDecode(token)));
       notifyListeners();
     }
   }
@@ -311,7 +367,7 @@ class BetterProgress extends ChangeNotifier implements Progress {
     await debugDelay();
 
     // check cache (shared preferences)
-    final cachedAcademicYear = _prefs.getString('academicYear');
+    final cachedAcademicYear = getString('academicYear');
     if (cachedAcademicYear != null) {
       final academicYear = AcademicYear.fromJson(jsonDecode(cachedAcademicYear));
       result = result.copyWith(data: academicYear, status: ResultStatus.loading, source: ResultSource.cache);
@@ -325,7 +381,7 @@ class BetterProgress extends ChangeNotifier implements Progress {
         final academicYear = AcademicYear.fromJson(response.data);
         result = result.copyWith(data: academicYear, status: ResultStatus.success, source: ResultSource.network);
         // save the academic year in the shared preferences
-        await _prefs.setString('academicYear', jsonEncode(response.data));
+        await setString('academicYear', jsonEncode(response.data));
         yield result;
       } else {
         result = result.copyWith(status: ResultStatus.error, error: 'Error ${response.statusCode}');
@@ -347,7 +403,7 @@ class BetterProgress extends ChangeNotifier implements Progress {
     await debugDelay();
 
     // check cache (shared preferences)
-    final cachedExamNotes = _prefs.getString('examNotes');
+    final cachedExamNotes = getString('examNotes');
     if (cachedExamNotes != null) {
       final examNotes = (jsonDecode(cachedExamNotes) as List).map((e) => ExamNote.fromJson(e)).toList();
       result = result.copyWith(data: examNotes, status: ResultStatus.loading, source: ResultSource.cache);
@@ -361,7 +417,7 @@ class BetterProgress extends ChangeNotifier implements Progress {
         final examNotes = (response.data as List).map((e) => ExamNote.fromJson(e)).toList();
         result = result.copyWith(data: examNotes, status: ResultStatus.success, source: ResultSource.network);
         // save the exam notes in the shared preferences
-        await _prefs.setString('examNotes', jsonEncode(response.data));
+        await setString('examNotes', jsonEncode(response.data));
         yield result;
       } else {
         result = result.copyWith(status: ResultStatus.error, error: 'Error ${response.statusCode}');
@@ -377,35 +433,60 @@ class BetterProgress extends ChangeNotifier implements Progress {
     return _getExamNotesStream().asBroadcastStream();
   }
 
+  String currentBacId = "default";
+
   @override
   Future<AuthResponse> login({required String username, required String password, bool saveCredentials = true}) async {
-    final result = await _client.post('https://progres.mesrs.dz/api/authentication/v1/', data: {
-      'username': username,
-      'password': password,
-    });
-    if (result.statusCode == 200) {
-      await setAuthResponse(AuthResponse.fromJson(result.data));
-      if (saveCredentials) {
-        await addCredentials(username, password);
+    // remove first 4 characters from the username
+    currentBacId = username.substring(4);
+    try {
+      final result = await _client.post('https://progres.mesrs.dz/api/authentication/v1/', data: {
+        'username': username,
+        'password': password,
+      });
+      if (result.statusCode == 200) {
+        await setAuthResponse(AuthResponse.fromJson(result.data));
+        await initAuth();
+        if (saveCredentials) {
+          await addCredentials(
+            name: "${student?.nomArabe} ${student?.prenomArabe} | ${BetterProgress.instance.studyYears?.first.niveauLibelleLongAr} | ${BetterProgress.instance.studyYears?.first.ofLlSpecialiteArabe ?? ""}",
+            username: username,
+            password: password,
+          );
+        }
+        return authResponse!;
+      } else {
+        throw Exception('Error ${result.statusCode}');
       }
-      await loadStudent();
-      await loadAcademicYear();
-      await loadStudyYear();
-      await loadExamNotes();
-      await loadCCNotes();
+    } catch (e) {
+      // try login with cached auth response
+      await loadAuthResponse();
+      await initAuth();
       return authResponse!;
-    } else {
-      throw Exception('Error ${result.statusCode}');
     }
   }
 
-  Map<String, String> savedCredentials = {};
+  Map<String, Map<String, String>> savedCredentials = {};
 
   /// load credentials from the shared preferences
   Future<void> loadCredentials() async {
     final credentials = _prefs.getString('credentials');
     if (credentials != null) {
-      savedCredentials = Map.from(jsonDecode(credentials));
+      var data = jsonDecode(credentials);
+      var ddata = <String, Map<String, String>>{};
+      // if values is string convert it to map
+      for (var key in data.keys) {
+        if (data[key] is String) {
+          ddata[key] = Map<String, String>.from({
+            'name': key.toString(),
+            'username': key.toString(),
+            'password': data[key].toString(),
+          });
+        } else {
+          ddata[key] = Map<String, String>.from(data[key]);
+        }
+      }
+      savedCredentials = Map<String, Map<String, String>>.from(ddata);
     }
     notifyListeners();
   }
@@ -415,15 +496,23 @@ class BetterProgress extends ChangeNotifier implements Progress {
     await _prefs.setString('credentials', jsonEncode(savedCredentials));
   }
 
-  Future<void> addCredentials(String username, String password) async {
-    savedCredentials[username] = password;
+  Future<void> addCredentials({
+    String? name,
+    required String username,
+    required String password,
+  }) async {
+    savedCredentials[username] = {
+      'name': name ?? username,
+      'username': username,
+      'password': password,
+    };
     await saveCredentials();
   }
 
   Future<void> setAuthResponse(AuthResponse? response) async {
     authResponse = response;
     _client.options.headers['Authorization'] = authResponse?.token;
-    await _prefs.setString('authResponse', jsonEncode(authResponse?.toJson()));
+    await setString('authResponse', jsonEncode(authResponse?.toJson()));
     notifyListeners();
   }
 

@@ -11,7 +11,7 @@ class CCNote with _$CCNote {
   const factory CCNote({
     required int id,
     double? note,
-    required bool absent,
+    bool? absent,
     required String llPeriode,
     required String llPeriodeAr,
     required String apCode,

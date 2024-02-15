@@ -109,7 +109,7 @@ CCNote _cCNoteDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = CCNote(
-    absent: reader.readBool(offsets[0]),
+    absent: reader.readBoolOrNull(offsets[0]),
     apCode: reader.readString(offsets[1]),
     id: reader.readLong(offsets[2]),
     llPeriode: reader.readString(offsets[3]),
@@ -129,7 +129,7 @@ P _cCNoteDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readBool(offset)) as P;
+      return (reader.readBoolOrNull(offset)) as P;
     case 1:
       return (reader.readString(offset)) as P;
     case 2:
@@ -235,8 +235,24 @@ extension CCNoteQueryWhere on QueryBuilder<CCNote, CCNote, QWhereClause> {
 }
 
 extension CCNoteQueryFilter on QueryBuilder<CCNote, CCNote, QFilterCondition> {
+  QueryBuilder<CCNote, CCNote, QAfterFilterCondition> absentIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'absent',
+      ));
+    });
+  }
+
+  QueryBuilder<CCNote, CCNote, QAfterFilterCondition> absentIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'absent',
+      ));
+    });
+  }
+
   QueryBuilder<CCNote, CCNote, QAfterFilterCondition> absentEqualTo(
-      bool value) {
+      bool? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'absent',
@@ -1374,7 +1390,7 @@ extension CCNoteQueryProperty on QueryBuilder<CCNote, CCNote, QQueryProperty> {
     });
   }
 
-  QueryBuilder<CCNote, bool, QQueryOperations> absentProperty() {
+  QueryBuilder<CCNote, bool?, QQueryOperations> absentProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'absent');
     });
@@ -1432,7 +1448,7 @@ extension CCNoteQueryProperty on QueryBuilder<CCNote, CCNote, QQueryProperty> {
 _$CCNoteImpl _$$CCNoteImplFromJson(Map<String, dynamic> json) => _$CCNoteImpl(
       id: json['id'] as int,
       note: (json['note'] as num?)?.toDouble(),
-      absent: json['absent'] as bool,
+      absent: json['absent'] as bool?,
       llPeriode: json['llPeriode'] as String,
       llPeriodeAr: json['llPeriodeAr'] as String,
       apCode: json['apCode'] as String,
