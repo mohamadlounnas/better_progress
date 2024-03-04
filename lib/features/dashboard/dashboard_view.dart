@@ -15,7 +15,6 @@ import '../../widgets/app_container.dart';
 import '../bac/groups_view.dart';
 import '../study_year/study_year_view.dart';
 
-
 /// This file contains the [DashboardView] class, which is a stateless widget that represents the dashboard view of the application.
 /// It displays various widgets related to the user's progress and notes, including the bac notes, groups, and GPA calculator.
 /// The [DashboardView] is wrapped in an [AuthGuard] widget to ensure that only authenticated users can access it.
@@ -47,12 +46,11 @@ class DashboardView extends StatelessWidget {
                           child: Column(
                             children: [
                               const SizedBox(height: 8),
-                               ListTile(
+                              ListTile(
                                 leading: Icon(Icons.school),
                                 title: Text(
-                                  // 'Progress and notes'
-                                  arfr('التقدم والملاحظات','Progrès et notes')
-                                  ),
+                                    // 'Progress and notes'
+                                    arfr('التقدم والملاحظات', 'Progrès et notes')),
                                 enabled: false,
                               ),
                               Padding(
@@ -85,16 +83,16 @@ class DashboardView extends StatelessWidget {
                                                   decoration: BoxDecoration(
                                                     borderRadius: BorderRadius.circular(12),
                                                   ),
-                                                  child:  ListTile(
+                                                  child: ListTile(
                                                     leading: Icon(
                                                       Icons.school,
                                                     ),
-                                                    title: Text(
-                                                      arfr("نقاط الباكالوريا", 'Notes du bac' ), style: TextStyle(fontSize: 16)),
+                                                    title: Text(arfr("نقاط الباكالوريا", 'Notes du bac'), style: TextStyle(fontSize: 16)),
                                                     subtitle: Text(
-                                                      arfr('شاهد نقاطك في الباكالوريا','voir les notes de votre bac')
-                                                      // "see the notes of your bac"
-                                                    , style: TextStyle(fontSize: 12)),
+                                                        arfr('شاهد نقاطك في الباكالوريا', 'voir les notes de votre bac')
+                                                        // "see the notes of your bac"
+                                                        ,
+                                                        style: TextStyle(fontSize: 12)),
                                                     trailing: Icon(Icons.arrow_forward_rounded),
                                                   ),
                                                 ),
@@ -122,19 +120,19 @@ class DashboardView extends StatelessWidget {
                                                   decoration: BoxDecoration(
                                                     borderRadius: BorderRadius.circular(12),
                                                   ),
-                                                  child:  ListTile(
+                                                  child: ListTile(
                                                     leading: Icon(
                                                       Icons.people,
                                                     ),
                                                     title: Text(
-                                                      arfr('المجموعات', 'Groupes')
-                                                      // 'Groups'
-                                                      , style: TextStyle(fontSize: 16)),
+                                                        arfr('المجموعات', 'Groupes')
+                                                        // 'Groups'
+                                                        ,
+                                                        style: TextStyle(fontSize: 16)),
                                                     subtitle: Text(
-                                                      // "all your groups"
-                                                      arfr('كل مجموعاتك', 'tous vos groupes')
-                                                      
-                                                      , style: TextStyle(fontSize: 12)),
+                                                        // "all your groups"
+                                                        arfr('كل مجموعاتك', 'tous vos groupes'),
+                                                        style: TextStyle(fontSize: 12)),
                                                     trailing: Icon(Icons.arrow_forward_rounded),
                                                   ),
                                                 ),
@@ -181,8 +179,8 @@ class DashboardView extends StatelessWidget {
                                                   begin: Alignment.bottomLeft,
                                                   end: Alignment.topRight,
                                                   colors: [
-                                                            Color.fromARGB(255, 170, 76, 175),
-                                                            Color.fromARGB(255, 132, 74, 195)
+                                                    Color.fromARGB(255, 170, 76, 175),
+                                                    Color.fromARGB(255, 132, 74, 195)
                                                   ],
                                                 ),
                                               ),
@@ -198,13 +196,15 @@ class DashboardView extends StatelessWidget {
                                                       Icon(Icons.calculate, color: Colors.white, size: 40),
                                                       Spacer(),
                                                       Text(
-                                                        arfr('حاسبة المعدل', 'Calculateur de GPA')
-                                                        // 'GPA Calculator'
-                                                        , style: TextStyle(fontSize: 16, color: Colors.white)),
+                                                          arfr('حاسبة المعدل', 'Calculateur de GPA')
+                                                          // 'GPA Calculator'
+                                                          ,
+                                                          style: TextStyle(fontSize: 16, color: Colors.white)),
                                                       Text(
-                                                        arfr( 'حساب معدلك', 'calculez votre GPA')
-                                                        // "calculate your GPA"
-                                                        , style: TextStyle(fontSize: 12, color: Colors.white)),
+                                                          arfr('حساب معدلك', 'calculez votre GPA')
+                                                          // "calculate your GPA"
+                                                          ,
+                                                          style: TextStyle(fontSize: 12, color: Colors.white)),
                                                     ],
                                                   ),
                                                 ),
@@ -218,12 +218,11 @@ class DashboardView extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 8),
-                               ListTile(
+                              ListTile(
                                 leading: Icon(Icons.history_rounded),
                                 title: Text(
-                                  // 'history'
-                                  arfr('التاريخ','Historique')
-                                  ),
+                                    // 'history'
+                                    arfr('التاريخ', 'Historique')),
                                 enabled: false,
                               ),
                               // studyyears in chips
@@ -291,9 +290,7 @@ class DashboardView extends StatelessWidget {
                                                       child: Column(
                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                         children: [
-                                                          Text(
-                                                            arfr(year.niveauLibelleLongAr ?? '', year.niveauLibelleLongLt)
-                                                            , style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5))),
+                                                          Text(arfr(year.niveauLibelleLongAr ?? '', year.niveauLibelleLongLt), style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5))),
                                                           Text(year.anneeAcademiqueCode.toString()),
                                                         ],
                                                       ),
@@ -383,7 +380,9 @@ class CustomAppBar extends StatelessWidget {
         children: [
           AppLogo(size: 40),
           SizedBox(width: 8),
-          Text('Better Progress'),
+          Text(
+            'bProgress',
+          ),
         ],
       ),
       actions: [

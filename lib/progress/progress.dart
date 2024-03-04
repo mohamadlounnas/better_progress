@@ -365,6 +365,10 @@ class BetterProgress extends ChangeNotifier implements Progress {
         options: Options(headers: {
           'Authorization': authResponse!.token,
         }));
+        if (response.data == "")
+        // retry after 5 sec
+        await Future.delayed(Duration(seconds: 5));
+        return getResults(studyYearId);
     if (response.statusCode == 200) {
       return (response.data as List).map((e) => StudyResult.fromJson(e)).toList();
     } else {
@@ -672,6 +676,9 @@ class BetterProgress extends ChangeNotifier implements Progress {
     student = null;
     studyYears = null;
     _client.options.headers.remove('Authorization');
+    // clear current bac id
+    await _prefs.remove('lastBacId');
+    await _prefs.remove('authResponse');
     notifyListeners();
   }
 
