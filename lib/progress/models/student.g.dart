@@ -25,7 +25,7 @@ const StudentSchema = CollectionSchema(
     r'dateNaissance': PropertySchema(
       id: 1,
       name: r'dateNaissance',
-      type: IsarType.string,
+      type: IsarType.dateTime,
     ),
     r'email': PropertySchema(
       id: 2,
@@ -103,7 +103,6 @@ int _studentEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
-  bytesCount += 3 + object.dateNaissance.length * 3;
   {
     final value = object.email;
     if (value != null) {
@@ -139,7 +138,7 @@ void _studentSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeLong(offsets[0], object.age);
-  writer.writeString(offsets[1], object.dateNaissance);
+  writer.writeDateTime(offsets[1], object.dateNaissance);
   writer.writeString(offsets[2], object.email);
   writer.writeLong(offsets[3], object.id);
   writer.writeString(offsets[4], object.identifiant);
@@ -160,7 +159,7 @@ Student _studentDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = Student(
-    dateNaissance: reader.readString(offsets[1]),
+    dateNaissance: reader.readDateTime(offsets[1]),
     email: reader.readStringOrNull(offsets[2]),
     id: reader.readLong(offsets[3]),
     identifiant: reader.readString(offsets[4]),
@@ -185,7 +184,7 @@ P _studentDeserializeProp<P>(
     case 0:
       return (reader.readLongOrNull(offset)) as P;
     case 1:
-      return (reader.readString(offset)) as P;
+      return (reader.readDateTime(offset)) as P;
     case 2:
       return (reader.readStringOrNull(offset)) as P;
     case 3:
@@ -369,55 +368,47 @@ extension StudentQueryFilter
   }
 
   QueryBuilder<Student, Student, QAfterFilterCondition> dateNaissanceEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+      DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'dateNaissance',
         value: value,
-        caseSensitive: caseSensitive,
       ));
     });
   }
 
   QueryBuilder<Student, Student, QAfterFilterCondition>
       dateNaissanceGreaterThan(
-    String value, {
+    DateTime value, {
     bool include = false,
-    bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
         property: r'dateNaissance',
         value: value,
-        caseSensitive: caseSensitive,
       ));
     });
   }
 
   QueryBuilder<Student, Student, QAfterFilterCondition> dateNaissanceLessThan(
-    String value, {
+    DateTime value, {
     bool include = false,
-    bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
         property: r'dateNaissance',
         value: value,
-        caseSensitive: caseSensitive,
       ));
     });
   }
 
   QueryBuilder<Student, Student, QAfterFilterCondition> dateNaissanceBetween(
-    String lower,
-    String upper, {
+    DateTime lower,
+    DateTime upper, {
     bool includeLower = true,
     bool includeUpper = true,
-    bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
@@ -426,76 +417,6 @@ extension StudentQueryFilter
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Student, Student, QAfterFilterCondition> dateNaissanceStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'dateNaissance',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Student, Student, QAfterFilterCondition> dateNaissanceEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'dateNaissance',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Student, Student, QAfterFilterCondition> dateNaissanceContains(
-      String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'dateNaissance',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Student, Student, QAfterFilterCondition> dateNaissanceMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'dateNaissance',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Student, Student, QAfterFilterCondition> dateNaissanceIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'dateNaissance',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Student, Student, QAfterFilterCondition>
-      dateNaissanceIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'dateNaissance',
-        value: '',
       ));
     });
   }
@@ -2307,11 +2228,9 @@ extension StudentQueryWhereDistinct
     });
   }
 
-  QueryBuilder<Student, Student, QDistinct> distinctByDateNaissance(
-      {bool caseSensitive = true}) {
+  QueryBuilder<Student, Student, QDistinct> distinctByDateNaissance() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'dateNaissance',
-          caseSensitive: caseSensitive);
+      return query.addDistinctBy(r'dateNaissance');
     });
   }
 
@@ -2408,7 +2327,7 @@ extension StudentQueryProperty
     });
   }
 
-  QueryBuilder<Student, String, QQueryOperations> dateNaissanceProperty() {
+  QueryBuilder<Student, DateTime, QQueryOperations> dateNaissanceProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dateNaissance');
     });
@@ -2489,7 +2408,8 @@ _$StudentImpl _$$StudentImplFromJson(Map<String, dynamic> json) =>
     _$StudentImpl(
       id: json['id'] as int,
       identifiant: json['identifiant'] as String,
-      dateNaissance: json['dateNaissance'] as String,
+      dateNaissance:
+          const DateTimeSerializer().fromJson(json['dateNaissance'] as String),
       nomArabe: json['nomArabe'] as String,
       nomLatin: json['nomLatin'] as String,
       prenomArabe: json['prenomArabe'] as String,
@@ -2504,7 +2424,8 @@ Map<String, dynamic> _$$StudentImplToJson(_$StudentImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'identifiant': instance.identifiant,
-      'dateNaissance': instance.dateNaissance,
+      'dateNaissance':
+          const DateTimeSerializer().toJson(instance.dateNaissance),
       'nomArabe': instance.nomArabe,
       'nomLatin': instance.nomLatin,
       'prenomArabe': instance.prenomArabe,

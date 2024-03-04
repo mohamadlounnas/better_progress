@@ -23,6 +23,7 @@ mixin _$AuthResponse {
   @DateTimeSerializer()
   DateTime get expirationDate => throw _privateConstructorUsedError;
   String get token => throw _privateConstructorUsedError;
+  String get uuid => throw _privateConstructorUsedError;
   int get userId => throw _privateConstructorUsedError;
   int get idIndividu => throw _privateConstructorUsedError;
   int get etablissementId => throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $AuthResponseCopyWith<$Res> {
   $Res call(
       {@DateTimeSerializer() DateTime expirationDate,
       String token,
+      String uuid,
       int userId,
       int idIndividu,
       int etablissementId,
@@ -64,6 +66,7 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
   $Res call({
     Object? expirationDate = null,
     Object? token = null,
+    Object? uuid = null,
     Object? userId = null,
     Object? idIndividu = null,
     Object? etablissementId = null,
@@ -77,6 +80,10 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      uuid: null == uuid
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
           ? _value.userId
@@ -109,6 +116,7 @@ abstract class _$$AuthResponseImplCopyWith<$Res>
   $Res call(
       {@DateTimeSerializer() DateTime expirationDate,
       String token,
+      String uuid,
       int userId,
       int idIndividu,
       int etablissementId,
@@ -128,6 +136,7 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? expirationDate = null,
     Object? token = null,
+    Object? uuid = null,
     Object? userId = null,
     Object? idIndividu = null,
     Object? etablissementId = null,
@@ -141,6 +150,10 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      uuid: null == uuid
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
           ? _value.userId
@@ -168,6 +181,7 @@ class _$AuthResponseImpl extends _AuthResponse {
   const _$AuthResponseImpl(
       {@DateTimeSerializer() required this.expirationDate,
       required this.token,
+      required this.uuid,
       required this.userId,
       required this.idIndividu,
       required this.etablissementId,
@@ -183,6 +197,8 @@ class _$AuthResponseImpl extends _AuthResponse {
   @override
   final String token;
   @override
+  final String uuid;
+  @override
   final int userId;
   @override
   final int idIndividu;
@@ -193,7 +209,7 @@ class _$AuthResponseImpl extends _AuthResponse {
 
   @override
   String toString() {
-    return 'AuthResponse(expirationDate: $expirationDate, token: $token, userId: $userId, idIndividu: $idIndividu, etablissementId: $etablissementId, userName: $userName)';
+    return 'AuthResponse(expirationDate: $expirationDate, token: $token, uuid: $uuid, userId: $userId, idIndividu: $idIndividu, etablissementId: $etablissementId, userName: $userName)';
   }
 
   @override
@@ -204,6 +220,7 @@ class _$AuthResponseImpl extends _AuthResponse {
             (identical(other.expirationDate, expirationDate) ||
                 other.expirationDate == expirationDate) &&
             (identical(other.token, token) || other.token == token) &&
+            (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.idIndividu, idIndividu) ||
                 other.idIndividu == idIndividu) &&
@@ -215,8 +232,8 @@ class _$AuthResponseImpl extends _AuthResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, expirationDate, token, userId,
-      idIndividu, etablissementId, userName);
+  int get hashCode => Object.hash(runtimeType, expirationDate, token, uuid,
+      userId, idIndividu, etablissementId, userName);
 
   @JsonKey(ignore: true)
   @override
@@ -236,6 +253,7 @@ abstract class _AuthResponse extends AuthResponse {
   const factory _AuthResponse(
       {@DateTimeSerializer() required final DateTime expirationDate,
       required final String token,
+      required final String uuid,
       required final int userId,
       required final int idIndividu,
       required final int etablissementId,
@@ -250,6 +268,8 @@ abstract class _AuthResponse extends AuthResponse {
   DateTime get expirationDate;
   @override
   String get token;
+  @override
+  String get uuid;
   @override
   int get userId;
   @override

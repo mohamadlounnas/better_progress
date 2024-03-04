@@ -56,6 +56,11 @@ const AuthResponseSchema = CollectionSchema(
       id: 7,
       name: r'userName',
       type: IsarType.string,
+    ),
+    r'uuid': PropertySchema(
+      id: 8,
+      name: r'uuid',
+      type: IsarType.string,
     )
   },
   estimateSize: _authResponseEstimateSize,
@@ -80,6 +85,7 @@ int _authResponseEstimateSize(
   var bytesCount = offsets.last;
   bytesCount += 3 + object.token.length * 3;
   bytesCount += 3 + object.userName.length * 3;
+  bytesCount += 3 + object.uuid.length * 3;
   return bytesCount;
 }
 
@@ -97,6 +103,7 @@ void _authResponseSerialize(
   writer.writeString(offsets[5], object.token);
   writer.writeLong(offsets[6], object.userId);
   writer.writeString(offsets[7], object.userName);
+  writer.writeString(offsets[8], object.uuid);
 }
 
 AuthResponse _authResponseDeserialize(
@@ -112,6 +119,7 @@ AuthResponse _authResponseDeserialize(
     token: reader.readString(offsets[5]),
     userId: reader.readLong(offsets[6]),
     userName: reader.readString(offsets[7]),
+    uuid: reader.readString(offsets[8]),
   );
   return object;
 }
@@ -138,6 +146,8 @@ P _authResponseDeserializeProp<P>(
     case 6:
       return (reader.readLong(offset)) as P;
     case 7:
+      return (reader.readString(offset)) as P;
+    case 8:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -894,6 +904,140 @@ extension AuthResponseQueryFilter
       ));
     });
   }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition> uuidEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'uuid',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition>
+      uuidGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'uuid',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition> uuidLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'uuid',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition> uuidBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'uuid',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition>
+      uuidStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'uuid',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition> uuidEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'uuid',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition> uuidContains(
+      String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'uuid',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition> uuidMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'uuid',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition>
+      uuidIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'uuid',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterFilterCondition>
+      uuidIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'uuid',
+        value: '',
+      ));
+    });
+  }
 }
 
 extension AuthResponseQueryObject
@@ -1002,6 +1146,18 @@ extension AuthResponseQuerySortBy
   QueryBuilder<AuthResponse, AuthResponse, QAfterSortBy> sortByUserNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'userName', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterSortBy> sortByUuid() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'uuid', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterSortBy> sortByUuidDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'uuid', Sort.desc);
     });
   }
 }
@@ -1120,6 +1276,18 @@ extension AuthResponseQuerySortThenBy
       return query.addSortBy(r'userName', Sort.desc);
     });
   }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterSortBy> thenByUuid() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'uuid', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QAfterSortBy> thenByUuidDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'uuid', Sort.desc);
+    });
+  }
 }
 
 extension AuthResponseQueryWhereDistinct
@@ -1173,6 +1341,13 @@ extension AuthResponseQueryWhereDistinct
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'userName', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AuthResponse, AuthResponse, QDistinct> distinctByUuid(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'uuid', caseSensitive: caseSensitive);
     });
   }
 }
@@ -1233,6 +1408,12 @@ extension AuthResponseQueryProperty
       return query.addPropertyName(r'userName');
     });
   }
+
+  QueryBuilder<AuthResponse, String, QQueryOperations> uuidProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'uuid');
+    });
+  }
 }
 
 // **************************************************************************
@@ -1244,6 +1425,7 @@ _$AuthResponseImpl _$$AuthResponseImplFromJson(Map<String, dynamic> json) =>
       expirationDate:
           const DateTimeSerializer().fromJson(json['expirationDate'] as String),
       token: json['token'] as String,
+      uuid: json['uuid'] as String,
       userId: json['userId'] as int,
       idIndividu: json['idIndividu'] as int,
       etablissementId: json['etablissementId'] as int,
@@ -1255,6 +1437,7 @@ Map<String, dynamic> _$$AuthResponseImplToJson(_$AuthResponseImpl instance) =>
       'expirationDate':
           const DateTimeSerializer().toJson(instance.expirationDate),
       'token': instance.token,
+      'uuid': instance.uuid,
       'userId': instance.userId,
       'idIndividu': instance.idIndividu,
       'etablissementId': instance.etablissementId,

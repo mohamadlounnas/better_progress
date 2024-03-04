@@ -17,6 +17,7 @@ class AuthResponse with _$AuthResponse {
     @DateTimeSerializer()
     required DateTime expirationDate,
     required String token,
+    required String uuid,
     required int userId,
     required int idIndividu,
     required int etablissementId,

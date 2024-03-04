@@ -22,7 +22,8 @@ Student _$StudentFromJson(Map<String, dynamic> json) {
 mixin _$Student {
   int get id => throw _privateConstructorUsedError;
   String get identifiant => throw _privateConstructorUsedError;
-  String get dateNaissance => throw _privateConstructorUsedError;
+  @DateTimeSerializer()
+  DateTime get dateNaissance => throw _privateConstructorUsedError;
   String get nomArabe => throw _privateConstructorUsedError;
   String get nomLatin => throw _privateConstructorUsedError;
   String get prenomArabe => throw _privateConstructorUsedError;
@@ -45,7 +46,7 @@ abstract class $StudentCopyWith<$Res> {
   $Res call(
       {int id,
       String identifiant,
-      String dateNaissance,
+      @DateTimeSerializer() DateTime dateNaissance,
       String nomArabe,
       String nomLatin,
       String prenomArabe,
@@ -93,7 +94,7 @@ class _$StudentCopyWithImpl<$Res, $Val extends Student>
       dateNaissance: null == dateNaissance
           ? _value.dateNaissance
           : dateNaissance // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       nomArabe: null == nomArabe
           ? _value.nomArabe
           : nomArabe // ignore: cast_nullable_to_non_nullable
@@ -140,7 +141,7 @@ abstract class _$$StudentImplCopyWith<$Res> implements $StudentCopyWith<$Res> {
   $Res call(
       {int id,
       String identifiant,
-      String dateNaissance,
+      @DateTimeSerializer() DateTime dateNaissance,
       String nomArabe,
       String nomLatin,
       String prenomArabe,
@@ -186,7 +187,7 @@ class __$$StudentImplCopyWithImpl<$Res>
       dateNaissance: null == dateNaissance
           ? _value.dateNaissance
           : dateNaissance // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       nomArabe: null == nomArabe
           ? _value.nomArabe
           : nomArabe // ignore: cast_nullable_to_non_nullable
@@ -229,7 +230,7 @@ class _$StudentImpl extends _Student {
   const _$StudentImpl(
       {required this.id,
       required this.identifiant,
-      required this.dateNaissance,
+      @DateTimeSerializer() required this.dateNaissance,
       required this.nomArabe,
       required this.nomLatin,
       required this.prenomArabe,
@@ -248,7 +249,8 @@ class _$StudentImpl extends _Student {
   @override
   final String identifiant;
   @override
-  final String dateNaissance;
+  @DateTimeSerializer()
+  final DateTime dateNaissance;
   @override
   final String nomArabe;
   @override
@@ -331,7 +333,7 @@ abstract class _Student extends Student {
   const factory _Student(
       {required final int id,
       required final String identifiant,
-      required final String dateNaissance,
+      @DateTimeSerializer() required final DateTime dateNaissance,
       required final String nomArabe,
       required final String nomLatin,
       required final String prenomArabe,
@@ -349,7 +351,8 @@ abstract class _Student extends Student {
   @override
   String get identifiant;
   @override
-  String get dateNaissance;
+  @DateTimeSerializer()
+  DateTime get dateNaissance;
   @override
   String get nomArabe;
   @override

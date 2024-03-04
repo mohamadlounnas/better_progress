@@ -17,3 +17,18 @@ class DateTimeSerializer implements JsonConverter<DateTime, String> {
     return object.toIso8601String();
   }
 }
+
+/// [String] to [double] serializer
+class StringToDoubleSerializer implements JsonConverter<double, String> {
+  const StringToDoubleSerializer();
+
+  @override
+  double fromJson(String json) {
+    return double.parse(json);
+  }
+
+  @override
+  String toJson(double object) {
+    return object.toString();
+  }
+}

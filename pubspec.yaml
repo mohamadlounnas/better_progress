@@ -86,6 +86,7 @@ flutter:
   assets:
     - assets/walpapers/
     - assets/logo/
+    - assets/cards/
     # - assets/top.json
     
 

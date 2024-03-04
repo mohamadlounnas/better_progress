@@ -9,9 +9,9 @@ class AppContainer extends StatelessWidget {
   // sm
   const AppContainer.sm({super.key,required this.child}) : maxWidth = 600;
   // md
-  const AppContainer.md({super.key,required this.child}) : maxWidth = 800;
+  const AppContainer.md({super.key,required this.child}) : maxWidth = 600;
   // lg
-  const AppContainer.lg({super.key,required this.child}) : maxWidth = 1000;
+  const AppContainer.lg({super.key,required this.child}) : maxWidth = 900;
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,11 @@ class AppContainer extends StatelessWidget {
         return maxWidth!;
       }
       var currentMaxWidth = MediaQuery.sizeOf(context).width;
-      if (currentMaxWidth > 1000) {
-        return 1000;
-      }
       if (currentMaxWidth > 800) {
         return 800;
+      }
+      if (currentMaxWidth > 800) {
+        return 700;
       }
       return 600;
     }
@@ -33,7 +33,8 @@ class AppContainer extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Center(
-          child: ConstrainedBox(
+          child: Container(
+            clipBehavior: Clip.none,
             constraints: BoxConstraints(
               maxWidth: getDynamicMaxWidth(),
             ),

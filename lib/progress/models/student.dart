@@ -1,3 +1,4 @@
+import 'package:better_progress/progress/converters.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:isar/isar.dart';
 
@@ -12,7 +13,8 @@ class Student with _$Student {
   const factory Student({
     required int id,
     required String identifiant,
-    required String dateNaissance,
+    @DateTimeSerializer()
+    required DateTime dateNaissance,
     required String nomArabe,
     required String nomLatin,
     required String prenomArabe,
@@ -29,7 +31,7 @@ class Student with _$Student {
 
   int? get age {
     try {
-      final dateNaissance = DateTime.parse(this.dateNaissance);
+      final dateNaissance = this.dateNaissance;
       final now = DateTime.now();
       final age = now.year - dateNaissance.year;
       if (now.month < dateNaissance.month || (now.month == dateNaissance.month && now.day < dateNaissance.day)) {
