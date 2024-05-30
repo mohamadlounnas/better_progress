@@ -15,7 +15,7 @@ class AuthGuard extends StatelessWidget {
     return ListenableBuilder(
       listenable: BetterProgress.instance,
       builder: (context, _) {
-        if (BetterProgress.instance.authResponse == null) {
+        if (BetterProgress.instance.authResponse == null || BetterProgress.instance.student == null) {
           return const _Login();
         }
         return child;

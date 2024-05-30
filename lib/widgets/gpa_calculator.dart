@@ -20,33 +20,98 @@ class GPACalculator extends StatefulWidget {
 }
 
 class _GPACalculatorState extends State<GPACalculator> {
-  late final notes = widget.notes;
-  late final ccNotes = widget.ccNotes;
+  List<String> get modules {
+    Set<String> _m = {};
+    for (var note in examNotes) {
+      _m.add(note.moduleName);
+    }
+    for (var note in ccNotes) {
+      _m.add(note.moduleName);
+    }
+    return _m.toList();
+  }
+
+  List<String> get examsPeriods {
+    Set<String> _p = {};
+    for (var note in widget.notes) {
+      _p.add(note.idPeriode.toString());
+    }
+    return _p.toList();
+  }
+
+  List<String> get ccPeriods {
+    Set<String> _p = {};
+    for (var note in widget.ccNotes) {
+      _p.add(note.llPeriode);
+    }
+    return _p.toList();
+  }
+
+  int? get _selectedExamPeriodIndex => _selectedCcPeriodIndex;
+  int? _selectedCcPeriodIndex;
+
+  List<ExamNote> get examNotes => _selectedExamPeriodIndex == null
+      ? []
+      : widget.notes.where((element) {
+        print(examsPeriods);
+        // return true;
+          var a = element.idPeriode.toString();
+          var b = examsPeriods[_selectedExamPeriodIndex!];
+          return a == b;
+        }).toList();
+  List<CCNote> get ccNotes => _selectedCcPeriodIndex == null
+      ? []
+      : widget.ccNotes.where((element) {
+          return element.llPeriode == ccPeriods[_selectedCcPeriodIndex!];
+        }).toList();
+
+  List<CCNote> get tds => ccNotes.where((element) => element.apCode.toUpperCase() == "TD").toList();
+
+  List<CCNote> get tps => ccNotes.where((element) => element.apCode.toUpperCase() == "TP").toList();
+  
+
   final Map<String, TextEditingController> _controllers = {};
-  final Map<String, TextEditingController> _ccControllers = {};
 
   @override
   void initState() {
     super.initState();
-    for (var note in notes) {
-      _controllers[note.mcLibelleFr.toLowerCase()] = TextEditingController(text: note.noteExamen?.toString());
+    loadAllNotes();
+
+  }
+
+  loadAllNotes() {
+    _controllers.clear();
+
+    for (var note in examNotes) {
+      _controllers[note.moduleName] = TextEditingController(text: note.noteExamen?.toString());
     }
     for (var note in ccNotes) {
-      _ccControllers[note.rattachementMcMcLibelleFr.toLowerCase()] = TextEditingController(text: note.note?.toString());
+      _controllers[note.moduleName] = TextEditingController(text: note.note?.toString());
     }
+
+    print("OK");
   }
 
   double calculateGPA() {
-    var total = 0.0;
-    for (var note in _controllers.entries) {
-      // var value = double.tryParse(note.value.text);
-      // if (value != null) {
-      //   total += value * getCoefficient(note.key);
-      // }
+    // var total = 0.0;
+    // for (var note in _controllers.entries) {
+    //   // var value = double.tryParse(note.value.text);
+    //   // if (value != null) {
+    //   //   total += value * getCoefficient(note.key);
+    //   // }
 
-      var value = getTotalOf(note.key);
+    //   var value = getTotalOf(note.key);
+    //   if (value != null) {
+    //     total += value * getCoefficient(note.key);
+    //   }
+    // }
+    // return total / totalCoefficient;
+
+    var total = 0.0;
+    for (var module in modules) {
+      var value = getTotalOf(module);
       if (value != null) {
-        total += value * getCoefficient(note.key);
+        total += value * getCoefficient(module);
       }
     }
     return total / totalCoefficient;
@@ -60,12 +125,12 @@ class _GPACalculatorState extends State<GPACalculator> {
   // }
 
   num getCoefficient(String name) {
-    return notes.firstWhere((element) => element.mcLibelleFr.toLowerCase() == name.toLowerCase()).rattachementMcCoefficient;
+    return examNotes.where((element) => element.mcLibelleFr.toLowerCase() == name.toLowerCase()).firstOrNull?.rattachementMcCoefficient ?? 0;
   }
 
   int get totalCoefficient {
     var totalCoefficient = 0;
-    for (var note in notes) {
+    for (var note in examNotes) {
       var value = getTotalOf(note.mcLibelleFr.toLowerCase());
       if (value != null) {
         totalCoefficient += note.rattachementMcCoefficient.toInt();
@@ -74,14 +139,25 @@ class _GPACalculatorState extends State<GPACalculator> {
     return totalCoefficient;
   }
 
-  double? getNoteOf(String name) {
-    return double.tryParse(handleNumber(_controllers[name]?.text));
-  }
-
-  double? getCCNoteOf(String name) {
-    var value = double.tryParse((handleNumber(_ccControllers[name]?.text)));
+  double? getExamNoteOf(String name) {
+    var mname = "ex:$name";
+    var value = double.tryParse((handleNumber(_controllers[mname]?.text)));
     return value;
   }
+
+  double? getTDNoteOf(String name) {
+    var mname = "td:$name";
+    var value = double.tryParse((handleNumber(_controllers[mname]?.text)));
+    return value;
+  }
+  
+
+  double? getTPNoteOf(String name) {
+    var mname = "tp:$name";
+    var value = double.tryParse((handleNumber(_controllers[mname]?.text)));
+    return value;
+  }
+
 
   String handleNumber(String? value) {
     var dic = {
@@ -108,18 +184,27 @@ class _GPACalculatorState extends State<GPACalculator> {
   }
 
   double? getTotalOf(String name) {
-    double? note = getNoteOf(name);
-    double? ccNote = getCCNoteOf(name);
-    if (note != null && ccNote != null) {
-      return note * 0.6 + ccNote * 0.4;
+    double? exam = getExamNoteOf(name);
+    double? td = getTDNoteOf(name);
+    double? tp = getTPNoteOf(name);
+    // if (note != null && ccNote != null) {
+    //   return note * 0.6 + ccNote * 0.4;
+    // }
+    // return note ?? ccNote;
+
+    if (tp != null) {
+      return tp;
     }
-    return note ?? ccNote;
+    if (td != null) {
+      return exam != null ? (exam * 0.6 + td * 0.4) : td;
+    }
+    return exam;
   }
 
   // showOnlyTPOf
   bool showOnlyTPOf(String name) {
     var ccNote = ccNotes.where((element) => element.rattachementMcMcLibelleFr.toLowerCase() == name.toLowerCase()).firstOrNull;
-    var note = notes.where((element) => element.mcLibelleFr.toLowerCase() == name.toLowerCase()).firstOrNull;
+    var note = examNotes.where((element) => element.mcLibelleFr.toLowerCase() == name.toLowerCase()).firstOrNull;
     if (ccNote?.apCode == "TP" && note?.noteExamen == null) {
       return true;
     }
@@ -130,6 +215,71 @@ class _GPACalculatorState extends State<GPACalculator> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Row(
+          children: [
+            // exams
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var cnote in examNotes)
+                  Text(
+                    cnote.moduleName,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+              ],
+            ),
+            // tds
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var cnote in tds)
+                  Text(
+                    cnote.moduleName,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+              ],
+            ),
+            // tps
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var cnote in tps)
+                  Text(
+                    cnote.moduleName,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+              ],
+            ),
+          ],
+        ),
+        // 2. cc periods
+        Wrap(
+          children: [
+            for (var period in ccPeriods)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: ChoiceChip(
+                  label: Text(period),
+                  selected: ccPeriods.indexOf(period) == _selectedCcPeriodIndex,
+                  onSelected: (value) {
+                    setState(() {
+                      _selectedCcPeriodIndex = ccPeriods.indexOf(period);
+                      loadAllNotes();
+                    });
+                  },
+                ),
+              ),
+          ],
+        ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Material(
@@ -165,6 +315,25 @@ class _GPACalculatorState extends State<GPACalculator> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              // display wrap of chips for both exam periods and cc periods
+                              // 1. exam periods
+                              // Wrap(
+                              //   children: [
+                              //     for (var period in examsPeriods)
+                              //       Padding(
+                              //         padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                              //         child: ChoiceChip(
+                              //           label: Text(period),
+                              //           selected: examsPeriods.indexOf(period) == _selectedExamPeriodIndex,
+                              //           onSelected: (value) {
+                              //             setState(() {
+                              //               _selectedExamPeriodIndex = examsPeriods.indexOf(period);
+                              //             });
+                              //           },
+                              //         ),
+                              //       ),
+                              //   ],
+                              // ),
                               Row(
                                 children: [
                                   Text('${BetterProgress.instance.student?.nomArabe} ${BetterProgress.instance.student?.prenomArabe}', style: const TextStyle(color: Colors.white)),
@@ -226,12 +395,12 @@ class _GPACalculatorState extends State<GPACalculator> {
                 ),
                 const Divider(height: 1),
                 const SizedBox(height: 8),
-                for (var note in notes)
+                for (var note in examNotes)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ListTile(
                       contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      tileColor: notes.indexOf(note) % 2 == 0 ? (Colors.grey.withOpacity(0.2)).withOpacity(0.2) : null,
+                      tileColor: examNotes.indexOf(note) % 2 == 0 ? (Colors.grey.withOpacity(0.2)).withOpacity(0.2) : null,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -284,7 +453,7 @@ class _GPACalculatorState extends State<GPACalculator> {
                                       return null;
                                     },
                                     autovalidateMode: AutovalidateMode.always,
-                                    controller: _ccControllers[ccNotes.firstWhere((element) => element.rattachementMcMcLibelleFr.toLowerCase() == note.mcLibelleFr.toLowerCase()).rattachementMcMcLibelleFr.toLowerCase()],
+                                    controller: _controllers[ccNotes.firstWhere((element) => element.rattachementMcMcLibelleFr.toLowerCase() == note.mcLibelleFr.toLowerCase()).rattachementMcMcLibelleFr.toLowerCase()],
                                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
                                     decoration: InputDecoration(
                                       isDense: true,

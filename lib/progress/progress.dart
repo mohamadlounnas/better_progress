@@ -127,7 +127,6 @@ class BetterProgress extends ChangeNotifier implements Progress {
     _client.options.validateStatus = (status) => true;
     // timeout for all the requests 10 seconds (it should use cache if timeout is reached)
     _client.options.connectTimeout = const Duration(seconds: 10);
-    _client.options.receiveTimeout = const Duration(seconds: 10);
   }
 
   /// Loads the photo from the server and decodes it into bytes.
@@ -138,6 +137,8 @@ class BetterProgress extends ChangeNotifier implements Progress {
   /// Finally, the [notifyListeners] method is called to notify listeners of the change in [photoData].
   Future<void> loadPhoto() async {
     if (authResponse == null) return;
+    photoData = null;
+    notifyListeners();
     var file = await DefaultCacheManager().getSingleFile(
       "https://progres.mesrs.dz/api/infos/image/${BetterProgress.instance.authResponse?.bacYear}/${BetterProgress.instance.authResponse?.bacId}",
       headers: {
@@ -156,6 +157,8 @@ class BetterProgress extends ChangeNotifier implements Progress {
   /// same as [loadPhoto] but for the university logo
   Future<void> loadUniversityLogo() async {
     if (authResponse == null) return;
+    universityLogoData=null;
+    notifyListeners();
     var file = await DefaultCacheManager().getSingleFile(
       "https://progres.mesrs.dz/api/infos/logoEtablissement/${authResponse?.etablissementId}",
       headers: {
@@ -180,9 +183,13 @@ class BetterProgress extends ChangeNotifier implements Progress {
   /// the study years
   List<StudyYear>? studyYears;
 
+  bool? loading;
+
   /// check if there is a user authenticated (save in isar)
   /// anneeAcademiqueId
   Future<void> initAuth() async {
+    loading = true;
+    notifyListeners();
     if (authResponse != null) {
       try {
         await loadStudent(offline: true);
@@ -218,6 +225,8 @@ class BetterProgress extends ChangeNotifier implements Progress {
     } catch (e) {
       print(e);
     }
+
+    loading = false;
     notifyListeners();
   }
 
@@ -365,10 +374,11 @@ class BetterProgress extends ChangeNotifier implements Progress {
         options: Options(headers: {
           'Authorization': authResponse!.token,
         }));
-        if (response.data == "")
-        // retry after 5 sec
-        await Future.delayed(Duration(seconds: 5));
-        return getResults(studyYearId);
+    if (response.data == "") {
+      // retry after 5 sec
+      await Future.delayed(Duration(seconds: 5));
+      return getResults(studyYearId);
+    }
     if (response.statusCode == 200) {
       return (response.data as List).map((e) => StudyResult.fromJson(e)).toList();
     } else {
@@ -667,7 +677,6 @@ class BetterProgress extends ChangeNotifier implements Progress {
     authResponse = response;
     _client.options.headers['Authorization'] = authResponse?.token;
     await setString('authResponse', jsonEncode(authResponse?.toJson()));
-    notifyListeners();
   }
 
   @override

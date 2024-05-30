@@ -1,3 +1,4 @@
+import 'package:better_progress/progress/models/cc_note.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:isar/isar.dart';
 
@@ -29,4 +30,21 @@ class ExamNote with _$ExamNote {
     noteExamen! * rattachementMcCoefficient * rattachementMcCredit;
 
   factory ExamNote.fromJson(Map<String, dynamic> json) => _$ExamNoteFromJson(json);
+}
+
+extension ExamNoteExtension on ExamNote {
+  // replace all spacail caraters like frnech char with ACCII chars
+  String get rootModule => mcLibelleFr.trim().replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().trim();
+  String get moduleName => "ex:${mcLibelleFr.replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().replaceAll("travaux pratiques", "").trim()}";
+  String get moduleNameAr => "ex:${mcLibelleAr.replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().trim()}";
+  String get moduleCode => rootModule.hashCode.toString(); //.toString();
+}
+
+// same for CCNote
+extension CCNoteExtension on CCNote {
+  // replace all spacail caraters like frnech char with ACCII chars
+  String get rootModule => rattachementMcMcLibelleFr.trim().replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().trim();
+  String get moduleName => "${apCode.toLowerCase()}:${rattachementMcMcLibelleFr.replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().replaceAll("travaux pratiques", "").trim()}";
+  String get moduleNameAr => "${apCode.toLowerCase()}:${rattachementMcMcLibelleAr.replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().trim()}";
+  String get moduleCode => rootModule.hashCode.toString(); //.length.toString();
 }
