@@ -15,7 +15,7 @@ class AuthGuard extends StatelessWidget {
     return ListenableBuilder(
       listenable: BetterProgress.instance,
       builder: (context, _) {
-        if (BetterProgress.instance.authResponse == null || BetterProgress.instance.student == null) {
+        if (BetterProgress.instance.authResponse == null) {
           return const _Login();
         }
         return child;
@@ -35,8 +35,8 @@ class _Login extends StatefulWidget {
 
 class _LoginState extends State<_Login> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController(text: "202432237503");
+  final TextEditingController _passwordController = TextEditingController(text: "HXhpGuJ4");
   bool _saveCredentials = true;
   bool loading = false;
   String? error;

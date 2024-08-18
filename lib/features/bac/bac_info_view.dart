@@ -251,7 +251,7 @@ class _BacInfoViewState extends State<BacInfoView> {
                                     // color: Colors.amber,
                                   ),
                                   Text(
-                                    'MATRICLUE# ${BetterProgress.instance.bacInfo!.matricule}',
+                                    'MATRICLUE# ${BetterProgress.instance.bacInfo?.matricule}',
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 14,

@@ -59,6 +59,10 @@ class _GPACalculatorState extends State<GPACalculator> {
           var b = examsPeriods[_selectedExamPeriodIndex!];
           return a == b;
         }).toList();
+  ExamNote? getExamNoteByModuleName(String moduleName) {
+    return examNotes.where((element) => element.moduleName == moduleName).firstOrNull;
+  }
+
   List<CCNote> get ccNotes => _selectedCcPeriodIndex == null
       ? []
       : widget.ccNotes.where((element) {
@@ -66,33 +70,44 @@ class _GPACalculatorState extends State<GPACalculator> {
         }).toList();
 
   List<CCNote> get tds => ccNotes.where((element) => element.apCode.toUpperCase() == "TD").toList();
+  CCNote? getTDbyModuleName(String moduleName) {
+    return tds.where((element) => element.moduleName == moduleName).firstOrNull;
+  }
+
+  CCNote? getTdByRootModule(String rootModule) {
+    return tds.where((element) => element.rootModule == rootModule).firstOrNull;
+  }
 
   List<CCNote> get tps => ccNotes.where((element) => element.apCode.toUpperCase() == "TP").toList();
-  
+  CCNote? getTPbyModuleName(String moduleName) {
+    return tps.where((element) => element.moduleName == moduleName).firstOrNull;
+  }
 
-  final Map<String, TextEditingController> _controllers = {};
+  Map<String, num?> allNotes = {};
 
   @override
   void initState() {
     super.initState();
     loadAllNotes();
-
   }
 
   loadAllNotes() {
-    _controllers.clear();
-
+    allNotes = {};
     for (var note in examNotes) {
-      _controllers[note.moduleName] = TextEditingController(text: note.noteExamen?.toString());
+      allNotes[note.moduleName] = note.noteExamen;
     }
-    for (var note in ccNotes) {
-      _controllers[note.moduleName] = TextEditingController(text: note.note?.toString());
+    for (var note in tds) {
+      allNotes[note.moduleName] = note.note;
     }
-
-    print("OK");
+    for (var note in tps) {
+      allNotes[note.moduleName] = note.note;
+    }
+    setState(() {
+      
+    });
   }
 
-  double calculateGPA() {
+  num calculateGPA() {
     // var total = 0.0;
     // for (var note in _controllers.entries) {
     //   // var value = double.tryParse(note.value.text);
@@ -107,14 +122,41 @@ class _GPACalculatorState extends State<GPACalculator> {
     // }
     // return total / totalCoefficient;
 
-    var total = 0.0;
-    for (var module in modules) {
-      var value = getTotalOf(module);
-      if (value != null) {
-        total += value * getCoefficient(module);
-      }
+    num total = 0;
+    int coef = 0;
+    for (var exam in examNotes) {
+      var _tds = tds.where((e) => e.rootModule == exam.rootModule);
+      assert(_tds.length<= 1);
+      CCNote? td = _tds.firstOrNull;
+      print("${exam.noteExamen} + ${td?.note} // ${exam.rootModule}");
+      if (exam.noteExamen == null) continue;
+      num note = td?.note == null? exam.noteExamen!: exam.noteExamen!*0.6+td!.note!*0.4;
+      total = total+note*exam.rattachementMcCoefficient.toInt();
+      coef += exam.rattachementMcCoefficient.toInt();
     }
-    return total / totalCoefficient;
+    for (var tp in tps) {
+      print("${tp.note} // ${tp.rootModule}");
+      if (tp.note == null) continue;
+      total += tp.note!*1;
+      coef += 1;
+    }
+    return coef == 0? 0 : total/coef;
+  }
+
+  // clculate but the modified values (from the comtrollers)
+  num calculateGpaModified() {
+    num totals = 0;
+    int coefs = 0;
+    for (var exam in examNotes) {
+      var rootName = exam.rootModule;
+      var total = getTotalOf(rootName);
+      var coef = getCoefficient(rootName);
+      if (total == null) continue;
+      totals += total*coef;
+      coefs+=coef;
+      
+    }
+    return coefs == 0? 0 : totals/coefs;
   }
 
   // double? getNoteTotal(String id) {
@@ -124,37 +166,37 @@ class _GPACalculatorState extends State<GPACalculator> {
   //   return note * getCoefficient(id);
   // }
 
-  num getCoefficient(String name) {
-    return examNotes.where((element) => element.mcLibelleFr.toLowerCase() == name.toLowerCase()).firstOrNull?.rattachementMcCoefficient ?? 0;
+  int getCoefficient(String name) {
+    return examNotes.where((element) => element.moduleName == name).firstOrNull?.rattachementMcCoefficient.toInt() ?? 0;
   }
 
   int get totalCoefficient {
     var totalCoefficient = 0;
     for (var note in examNotes) {
-      var value = getTotalOf(note.mcLibelleFr.toLowerCase());
-      if (value != null) {
-        totalCoefficient += note.rattachementMcCoefficient.toInt();
-      }
+      totalCoefficient += note.rattachementMcCoefficient.toInt();
+    }
+    for (var note in tps) {
+      totalCoefficient += 1;
     }
     return totalCoefficient;
   }
 
   double? getExamNoteOf(String name) {
     var mname = "ex:$name";
-    var value = double.tryParse((handleNumber(_controllers[mname]?.text)));
+    var value = double.tryParse((handleNumber(allNotes[mname].toString())));
     return value;
   }
 
   double? getTDNoteOf(String name) {
     var mname = "td:$name";
-    var value = double.tryParse((handleNumber(_controllers[mname]?.text)));
+    var value = double.tryParse((handleNumber(allNotes[mname]?.toString())));
     return value;
   }
   
 
   double? getTPNoteOf(String name) {
     var mname = "tp:$name";
-    var value = double.tryParse((handleNumber(_controllers[mname]?.text)));
+    var value = double.tryParse((handleNumber(allNotes[mname].toString())));
     return value;
   }
 
@@ -183,22 +225,14 @@ class _GPACalculatorState extends State<GPACalculator> {
     return value.toString();
   }
 
-  double? getTotalOf(String name) {
-    double? exam = getExamNoteOf(name);
-    double? td = getTDNoteOf(name);
-    double? tp = getTPNoteOf(name);
-    // if (note != null && ccNote != null) {
-    //   return note * 0.6 + ccNote * 0.4;
-    // }
-    // return note ?? ccNote;
-
-    if (tp != null) {
-      return tp;
-    }
-    if (td != null) {
-      return exam != null ? (exam * 0.6 + td * 0.4) : td;
-    }
-    return exam;
+  num? getTotalOf(String moduleName) {
+    var examNote = allNotes["ex:$moduleName"];
+    var tdNote = allNotes["td:$moduleName"];
+    var tpNote = allNotes["tp:$moduleName"];
+    if (tpNote != null) return tpNote;
+    if (examNote == null) return null;
+    if (tdNote == null) return examNote;
+    return examNote * 0.6 + tdNote * 0.4;
   }
 
   // showOnlyTPOf
@@ -359,7 +393,7 @@ class _GPACalculatorState extends State<GPACalculator> {
                         children: [
                           Text('${BetterProgress.instance.academicYear?.code}', style: const TextStyle(color: Colors.white)),
                           Text(
-                            calculateGPA().toStringAsFixed(2),
+                            calculateGpaModified().toStringAsFixed(2),
                             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
                           ),
                           Text('Coefs $totalCoefficient', style: const TextStyle(color: Colors.white)),
@@ -409,9 +443,9 @@ class _GPACalculatorState extends State<GPACalculator> {
                           Row(
                             children: [
                               //
-                              if (!showOnlyTPOf(note.mcLibelleFr.toLowerCase()))
                                 Expanded(
                                   child: TextFormField(
+                                    key: ValueKey(note.id),
                                     // validator
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -422,8 +456,8 @@ class _GPACalculatorState extends State<GPACalculator> {
                                       }
                                       return null;
                                     },
-                                    autovalidateMode: AutovalidateMode.always,
-                                    controller: _controllers[note.mcLibelleFr.toLowerCase()],
+                                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                                    initialValue: allNotes["ex:${note.rootModule}"]?.toString() ?? "",
                                     // numbers with comma
                                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
                                     decoration: InputDecoration(
@@ -434,16 +468,21 @@ class _GPACalculatorState extends State<GPACalculator> {
                                       labelText: 'Exam',
                                     ),
                                     onChanged: (value) {
-                                      setState(() {});
+                                      setState(() {
+                                        allNotes["ex:${note.rootModule}"] = num.tryParse(value);
+                                      });
                                     },
                                   ),
                                 ),
                               // if have CC note with same nam  e
-                              if (ccNotes.any((element) => element.rattachementMcMcLibelleFr.toLowerCase() == note.mcLibelleFr.toLowerCase())) ...[
-                                if (!showOnlyTPOf(note.mcLibelleFr.toLowerCase())) const SizedBox(width: 8),
+                              if (
+                                getTdByRootModule(note.rootModule) != null
+                              ) ...[
+                                const SizedBox(width: 8),
                                 Expanded(
                                   child: TextFormField(
-                                    validator: (value) {
+
+                                    key: ValueKey(note.id),                                    validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'required';
                                       }
@@ -453,17 +492,19 @@ class _GPACalculatorState extends State<GPACalculator> {
                                       return null;
                                     },
                                     autovalidateMode: AutovalidateMode.always,
-                                    controller: _controllers[ccNotes.firstWhere((element) => element.rattachementMcMcLibelleFr.toLowerCase() == note.mcLibelleFr.toLowerCase()).rattachementMcMcLibelleFr.toLowerCase()],
+                                    initialValue: allNotes["td:${note.rootModule}"]?.toString() ?? "",
                                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
                                     decoration: InputDecoration(
                                       isDense: true,
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(12),
                                       ),
-                                      labelText: ccNotes.firstWhere((element) => element.rattachementMcMcLibelleFr.toLowerCase() == note.mcLibelleFr.toLowerCase()).apCode,
+                                      labelText: getTdByRootModule(note.rootModule)!.apCode,
                                     ),
                                     onChanged: (value) {
-                                      setState(() {});
+                                      setState(() {
+                                        allNotes["td:${note.rootModule}"] = num.tryParse(value);
+                                      });
                                     },
                                   ),
                                 )
@@ -472,12 +513,12 @@ class _GPACalculatorState extends State<GPACalculator> {
                           ),
                           Text("×" + note.rattachementMcCoefficient.toInt().toString()),
                           Text(
-                            (getTotalOf(note.mcLibelleFr.toLowerCase())?.toStringAsFixed(2)).toString(),
+                            getTotalOf(note.rootModule)?.toStringAsFixed(2) ?? "!",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: getTotalOf(note.mcLibelleFr.toLowerCase()) == null
+                              color: getTotalOf(note.rootModule) == null
                                   ? null
-                                  : getTotalOf(note.mcLibelleFr.toLowerCase())! < 10
+                                  : getTotalOf(note.rootModule)! < 10
                                       ? Colors.red
                                       : Colors.green,
                             ),
@@ -486,6 +527,113 @@ class _GPACalculatorState extends State<GPACalculator> {
                       ),
                       subtitle: Text(
                         arfr(note.mcLibelleAr, note.mcLibelleFr),
+                      ),
+                    ),
+                  ),
+                // TPs
+                const ListTile(
+                  enabled: false,
+                  title: Text("TPs"),
+                  leading: Icon(Icons.colorize_rounded),
+                ),
+                for (var note in tps)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      tileColor: tps.indexOf(note) % 2 == 0 ? (Colors.grey.withOpacity(0.2)).withOpacity(0.2) : null,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      title: FlexTableItem(
+                        children: [
+                          Row(
+                            children: [
+                              //
+                                Expanded(
+                                  child: TextFormField(
+                                    key: ValueKey(note.id),
+                                    // validator
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'required';
+                                      }
+                                      if (double.tryParse(value) == null) {
+                                        return 'must be a number';
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                                    initialValue: allNotes["tp:${note.rootModule}"]?.toString() ?? "",
+                                    // numbers with comma
+                                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                                    decoration: InputDecoration(
+                                      isDense: true,
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      labelText: 'TP',
+                                    ),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        allNotes["tp:${note.rootModule}"] = num.tryParse(value);
+                                      });
+                                    },
+                                  ),
+                                ),
+                              // if have CC note with same nam  e
+                              if (
+                                getTdByRootModule(note.rootModule) != null
+                              ) ...[
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: TextFormField(
+
+                                    key: ValueKey(note.id),                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'required';
+                                      }
+                                      if (double.tryParse(value) == null) {
+                                        return 'must be a number';
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode: AutovalidateMode.always,
+                                    initialValue: allNotes[note.moduleName]?.toString() ?? "",
+                                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                                    decoration: InputDecoration(
+                                      isDense: true,
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      labelText: getTdByRootModule(note.rootModule)!.apCode,
+                                    ),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        allNotes["tp:${note.rootModule}"] = num.tryParse(value);
+                                      });
+                                    },
+                                  ),
+                                )
+                              ],
+                            ],
+                          ),
+                          const Text("×1"),
+                          Text(
+                            getTotalOf(note.rootModule)?.toStringAsFixed(2) ?? "!",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: getTotalOf(note.rootModule) == null
+                                  ? null
+                                  : getTotalOf(note.rootModule)! < 10
+                                      ? Colors.red
+                                      : Colors.green,
+                            ),
+                          ),
+                        ],
+                      ),
+                      subtitle: Text(
+                        arfr(note.moduleNameAr, note.moduleName),
                       ),
                     ),
                   ),

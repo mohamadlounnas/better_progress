@@ -34,8 +34,8 @@ class ExamNote with _$ExamNote {
 
 extension ExamNoteExtension on ExamNote {
   // replace all spacail caraters like frnech char with ACCII chars
-  String get rootModule => mcLibelleFr.trim().replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().trim();
-  String get moduleName => "ex:${mcLibelleFr.replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().replaceAll("travaux pratiques", "").trim()}";
+  String get rootModule => mcLibelleFr.trim().replaceAll(RegExp(r'[^\x00-\x7F]'), '').trim().replaceAll(' ', '_').replaceAll("-", "_").replaceAll("travaux pratiques??", "").toLowerCase().trim();
+  String get moduleName => "ex:$rootModule";
   String get moduleNameAr => "ex:${mcLibelleAr.replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().trim()}";
   String get moduleCode => rootModule.hashCode.toString(); //.toString();
 }
@@ -43,8 +43,8 @@ extension ExamNoteExtension on ExamNote {
 // same for CCNote
 extension CCNoteExtension on CCNote {
   // replace all spacail caraters like frnech char with ACCII chars
-  String get rootModule => rattachementMcMcLibelleFr.trim().replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().trim();
-  String get moduleName => "${apCode.toLowerCase()}:${rattachementMcMcLibelleFr.replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().replaceAll("travaux pratiques", "").trim()}";
+  String get rootModule => rattachementMcMcLibelleFr.trim().replaceAll(RegExp(r'[^\x00-\x7F]'), '').trim().replaceAll(' ', '_').replaceAll("-", "_").replaceAll("travaux pratiques??", "").toLowerCase().trim();
+  String get moduleName => "${apCode.toLowerCase()}:$rootModule";
   String get moduleNameAr => "${apCode.toLowerCase()}:${rattachementMcMcLibelleAr.replaceAll(RegExp(r'[^\x00-\x7F]'), '').replaceAll(' ', '_').replaceAll("-", "_").toLowerCase().trim()}";
   String get moduleCode => rootModule.hashCode.toString(); //.length.toString();
 }

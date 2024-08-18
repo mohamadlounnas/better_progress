@@ -29,7 +29,7 @@ class DashboardView extends StatelessWidget {
       listenable: BetterProgress.instance,
       builder: (context, _) {
         return LoadingBox(
-              loading: BetterProgress.instance.loading ?? false,
+              loading: false, //BetterProgress.instance.loading ?? false,
           child: ColoredBox(
             color: Theme.of(context).colorScheme.background,
             child: AuthGuard(
@@ -209,7 +209,6 @@ class DashboardView extends StatelessWidget {
                                                         ),
                                                         body: SingleChildScrollView(
                                                           child: GPACalculator(
-                                                            key: UniqueKey(),
                                                             ccNotes: BetterProgress.instance.ccNotes ?? [],
                                                             notes: BetterProgress.instance.examNotes ?? [],
                                                           ),
