@@ -35,8 +35,10 @@ class _Login extends StatefulWidget {
 
 class _LoginState extends State<_Login> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController(text: "202432237503");
-  final TextEditingController _passwordController = TextEditingController(text: "HXhpGuJ4");
+  final TextEditingController _usernameController =
+      TextEditingController(text: "202432237503");
+  final TextEditingController _passwordController =
+      TextEditingController(text: "HXhpGuJ4");
   bool _saveCredentials = true;
   bool loading = false;
   String? error;
@@ -59,7 +61,10 @@ class _LoginState extends State<_Login> {
                     const SizedBox(height: 20),
                     Card(
                       margin: const EdgeInsets.all(24),
-                      color: Theme.of(context).colorScheme.surface.withOpacity(0.5),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .surface
+                          .withOpacity(0.5),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24),
@@ -77,7 +82,8 @@ class _LoginState extends State<_Login> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 24),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 24),
                                 child: MenuAnchor(
                                   builder: (context, controller, _) {
                                     return TextFormField(
@@ -85,16 +91,20 @@ class _LoginState extends State<_Login> {
                                       decoration: InputDecoration(
                                         isDense: true,
                                         border: const OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(8)),
                                         ),
-                                        prefixIcon: const Icon(Icons.person_outline_outlined),
+                                        prefixIcon: const Icon(
+                                            Icons.person_outline_outlined),
                                         labelText: 'Username',
                                         hintText: '202YXXXXXXX',
                                         alignLabelWithHint: true,
-                                        suffixIcon: BetterProgress.instance.savedCredentials.isEmpty
+                                        suffixIcon: BetterProgress.instance
+                                                .savedCredentials.isEmpty
                                             ? null
                                             : IconButton(
-                                                icon: const Icon(Icons.key_rounded),
+                                                icon: const Icon(
+                                                    Icons.key_rounded),
                                                 onPressed: () {
                                                   if (controller.isOpen) {
                                                     controller.close();
@@ -115,18 +125,25 @@ class _LoginState extends State<_Login> {
 
                                   // items is credentials
                                   menuChildren: [
-                                    for (var entry in BetterProgress.instance.savedCredentials.entries)
+                                    for (var entry in BetterProgress
+                                        .instance.savedCredentials.entries)
                                       MenuItemButton(
-                                        leadingIcon: const Icon(Icons.person_outline_outlined),
+                                        leadingIcon: const Icon(
+                                            Icons.person_outline_outlined),
                                         onPressed: () {
                                           _usernameController.text = entry.key;
-                                          _passwordController.text = entry.value['password'] ?? '';
+                                          _passwordController.text =
+                                              entry.value['password'] ?? '';
                                         },
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(entry.key),
-                                            Text(entry.value['name']!, style: Theme.of(context).textTheme.bodySmall),
+                                            Text(entry.value['name']!,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodySmall),
                                           ],
                                         ),
                                       ),
@@ -135,18 +152,22 @@ class _LoginState extends State<_Login> {
                               ),
                               const SizedBox(height: 20),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 24),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 24),
                                 child: TextFormField(
                                   controller: _passwordController,
                                   decoration: const InputDecoration(
                                     alignLabelWithHint: true,
                                     isDense: true,
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8)),
                                     ),
-                                    prefixIcon: Icon(Icons.lock_outline_rounded),
+                                    prefixIcon:
+                                        Icon(Icons.lock_outline_rounded),
                                     labelText: 'Password',
-                                    helperText: 'a password by default is birthday "DDMMYYYY"',
+                                    helperText:
+                                        'a password by default is birthday "DDMMYYYY"',
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -159,10 +180,12 @@ class _LoginState extends State<_Login> {
                               const SizedBox(height: 20),
                               // checkbox for save credentials
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 12),
                                 child: ListTile(
                                   trailing: Switch(
-                                    activeColor: Theme.of(context).colorScheme.primary,
+                                    activeColor:
+                                        Theme.of(context).colorScheme.primary,
                                     value: _saveCredentials,
                                     onChanged: (bool value) {
                                       setState(() {
@@ -171,7 +194,8 @@ class _LoginState extends State<_Login> {
                                     },
                                   ),
                                   title: const Text('Save credentials'),
-                                  subtitle: const Text('Save your credentials for the next time'),
+                                  subtitle: const Text(
+                                      'Save your credentials for the next time'),
                                   leading: const Icon(Icons.key_rounded),
                                   onTap: () {
                                     setState(() {
@@ -182,14 +206,20 @@ class _LoginState extends State<_Login> {
                               ),
                               const SizedBox(height: 12),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 12),
                                 child: Material(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Theme.of(context).colorScheme.primary,
                                   elevation: 3,
                                   child: ListTile(
-                                    leading: const Icon(Icons.fingerprint_rounded, color: Colors.white),
-                                    title: const Center(child: Text('Signin with progress', style: TextStyle(color: Colors.white))),
+                                    leading: const Icon(
+                                        Icons.fingerprint_rounded,
+                                        color: Colors.white),
+                                    title: const Center(
+                                        child: Text('Signin with progress',
+                                            style: TextStyle(
+                                                color: Colors.white))),
                                     onTap: () async {
                                       if (_formKey.currentState!.validate()) {
                                         setState(() {
@@ -205,22 +235,32 @@ class _LoginState extends State<_Login> {
                                         }
                                         // on DioException
                                         on DioException catch (e) {
-                                          error = e.response?.data ?? e.message ?? e.error.toString();
+                                          error = e.response?.data ??
+                                              e.message ??
+                                              e.error.toString();
                                           if (mounted) {
-                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(SnackBar(
                                               content: Text(error!),
-                                              backgroundColor: Theme.of(context).colorScheme.error,
-                                              behavior: SnackBarBehavior.floating,
+                                              backgroundColor: Theme.of(context)
+                                                  .colorScheme
+                                                  .error,
+                                              behavior:
+                                                  SnackBarBehavior.floating,
                                               width: 400,
                                             ));
                                           }
                                         } catch (e) {
                                           error = e.toString();
                                           if (mounted) {
-                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(SnackBar(
                                               content: Text(error!),
-                                              backgroundColor: Theme.of(context).colorScheme.error,
-                                              behavior: SnackBarBehavior.floating,
+                                              backgroundColor: Theme.of(context)
+                                                  .colorScheme
+                                                  .error,
+                                              behavior:
+                                                  SnackBarBehavior.floating,
                                               width: 400,
                                             ));
                                           }
