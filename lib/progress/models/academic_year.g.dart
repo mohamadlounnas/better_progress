@@ -648,7 +648,7 @@ extension AcademicYearQueryProperty
 
 _$AcademicYearImpl _$$AcademicYearImplFromJson(Map<String, dynamic> json) =>
     _$AcademicYearImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       code: json['code'] as String,
       libelle: json['libelle'] as String?,
     );

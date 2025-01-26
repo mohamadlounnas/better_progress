@@ -8,9 +8,9 @@ part of 'study_result.dart';
 
 _$StudyResultImpl _$$StudyResultImplFromJson(Map<String, dynamic> json) =>
     _$StudyResultImpl(
-      id: json['id'] as int,
-      type: json['type'] as int,
-      periodeId: json['periodeId'] as int,
+      id: (json['id'] as num).toInt(),
+      type: (json['type'] as num).toInt(),
+      periodeId: (json['periodeId'] as num).toInt(),
       periodeLibelleFr: json['periodeLibelleFr'] as String,
       periodeLibelleAr: json['periodeLibelleAr'] as String,
       bilanUes: (json['bilanUes'] as List<dynamic>)
@@ -24,11 +24,11 @@ _$StudyResultImpl _$$StudyResultImplFromJson(Map<String, dynamic> json) =>
       annuel: json['annuel'] as bool,
       cycleLibelleLongLt: json['cycleLibelleLongLt'] as String,
       niveauCode: json['niveauCode'] as String,
-      niveauRang: json['niveauRang'] as int,
+      niveauRang: (json['niveauRang'] as num).toInt(),
       niveauLibelleLongLt: json['niveauLibelleLongLt'] as String,
       niveauLibelleLongAr: json['niveauLibelleLongAr'] as String,
-      totalAquis: json['totalAquis'] as int,
-      effectif: json['effectif'] as int,
+      totalAquis: (json['totalAquis'] as num).toInt(),
+      effectif: (json['effectif'] as num).toInt(),
       coefficient: (json['coefficient'] as num).toDouble(),
     );
 

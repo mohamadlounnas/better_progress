@@ -330,6 +330,8 @@ class BetterProgress extends ChangeNotifier implements Progress {
   }
 
   Future<List<ExamNote>> getExamNotes() async {
+    // final response = await _client.get('https://progres.mesrs.dz/api/infos/planningSession/dia/$currentStudyYearId/noteExamens',
+    // https://progres.mesrs.dz/api/infos/planningSession/dia/37246739/noteExamens
     final response = await _client.get('https://progres.mesrs.dz/api/infos/planningSession/dia/$currentStudyYearId/noteExamens',
         options: Options(headers: {
           'Authorization': authResponse!.token,
@@ -463,7 +465,9 @@ class BetterProgress extends ChangeNotifier implements Progress {
 
   // curl -H "Host: progres.mesrs.dz" -H "Accept: application/json, text/plain, */*" -H "User-Agent: webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0" -H "Accept-Language: en-GB,en-US;q=0.9,en;q=0.8" -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDA0MTUxOSwiaWF0IjoxNzA3NTM1OTE5fQ._6hZ9kVGzhB9NgKYM6gQxFGwY-mX87ZDXUMgCXTwf6w" --compressed "https://progres.mesrs.dz/api/infos/bac/2020/32027978/dias"
   Future<List<StudyYear>> getStudyYears() async {
-    final response = await _client.get('https://progres.mesrs.dz/api/infos/bac/${authResponse!.bacYear}/${authResponse!.bacId}/dias',
+    // final response = await _client.get('https://progres.mesrs.dz/api/infos/bac/${authResponse!.bacYear}/${authResponse!.bacId}/dias',
+    // https://progres.mesrs.dz/api/infos/bac/9a5d28e2-4bfa-4b3d-8b8f-e3b042885e73/dias
+    final response = await _client.get('https://progres.mesrs.dz/api/infos/bac/${authResponse!.uuid}/dias',
         options: Options(headers: {
           'Authorization': authResponse!.token,
         }));
@@ -495,7 +499,9 @@ class BetterProgress extends ChangeNotifier implements Progress {
 
   // curl -H "Host: progres.mesrs.dz" -H "Accept: application/json, text/plain, */*" -H "User-Agent: webetu/1 CFNetwork/1494.0.5 Darwin/23.4.0" -H "Accept-Language: en-GB,en-US;q=0.9,en;q=0.8" -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDIwMzIwMjc5NzgiLCJpZENvbXB0ZSI6NjY1MjQwMywiaWRFdGFibGlzc2VtZW50IjoxMzY5NTIsImlkSW5kaXZpZHUiOjM3MjQ2NzM5LCJ1c2VyTmFtZSI6IjIwMjAzMjAyNzk3OCIsImV4cCI6MTcxMDA0MTUxOSwiaWF0IjoxNzA3NTM1OTE5fQ._6hZ9kVGzhB9NgKYM6gQxFGwY-mX87ZDXUMgCXTwf6w" --compressed "https://progres.mesrs.dz/api/infos/bac/2020/32027978/individu"
   Future<Student> getStudent() async {
-    final response = await _client.get('https://progres.mesrs.dz/api/infos/bac/${authResponse!.bacYear}/${authResponse!.bacId}/individu');
+    // final response = await _client.get('https://progres.mesrs.dz/api/infos/bac/${authResponse!.bacYear}/${authResponse!.bacId}/individu');
+    // https://progres.mesrs.dz/api/infos/bac/9a5d28e2-4bfa-4b3d-8b8f-e3b042885e73/individu
+    final response = await _client.get('https://progres.mesrs.dz/api/infos/bac/${authResponse!.uuid}/individu');
     if (response.statusCode == 200) {
       return Student.fromJson(response.data);
     } else {

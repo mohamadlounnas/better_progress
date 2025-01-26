@@ -35,8 +35,8 @@ class _Login extends StatefulWidget {
 
 class _LoginState extends State<_Login> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController(text: "202432237503");
-  final TextEditingController _passwordController = TextEditingController(text: "HXhpGuJ4");
+  final TextEditingController _usernameController = TextEditingController(text: "202032027978");
+  final TextEditingController _passwordController = TextEditingController(text: "07102000");
   bool _saveCredentials = true;
   bool loading = false;
   String? error;

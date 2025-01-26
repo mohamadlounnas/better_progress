@@ -1446,7 +1446,7 @@ extension CCNoteQueryProperty on QueryBuilder<CCNote, CCNote, QQueryProperty> {
 // **************************************************************************
 
 _$CCNoteImpl _$$CCNoteImplFromJson(Map<String, dynamic> json) => _$CCNoteImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       note: (json['note'] as num?)?.toDouble(),
       absent: json['absent'] as bool?,
       llPeriode: json['llPeriode'] as String,

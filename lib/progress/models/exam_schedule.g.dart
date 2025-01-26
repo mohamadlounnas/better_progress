@@ -361,7 +361,7 @@ extension ExamScheduleQueryProperty
 
 _$ExamScheduleImpl _$$ExamScheduleImplFromJson(Map<String, dynamic> json) =>
     _$ExamScheduleImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ExamScheduleImplToJson(_$ExamScheduleImpl instance) =>

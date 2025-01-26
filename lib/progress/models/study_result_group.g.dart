@@ -9,9 +9,9 @@ part of 'study_result_group.dart';
 _$StudyResultGroupImpl _$$StudyResultGroupImplFromJson(
         Map<String, dynamic> json) =>
     _$StudyResultGroupImpl(
-      id: json['id'] as int,
-      bilanSessionId: json['bilanSessionId'] as int,
-      repartitionUeId: json['repartitionUeId'] as int,
+      id: (json['id'] as num).toInt(),
+      bilanSessionId: (json['bilanSessionId'] as num).toInt(),
+      repartitionUeId: (json['repartitionUeId'] as num).toInt(),
       ueLibelleFr: json['ueLibelleFr'] as String,
       ueCode: json['ueCode'] as String,
       ueType: json['ueType'] as String,
@@ -28,8 +28,8 @@ _$StudyResultGroupImpl _$$StudyResultGroupImplFromJson(
           .toList(),
       ueNoteObtention: (json['ueNoteObtention'] as num).toDouble(),
       ueAcquis: json['ueAcquis'] as bool,
-      totalAquis: json['totalAquis'] as int,
-      effectif: json['effectif'] as int,
+      totalAquis: (json['totalAquis'] as num).toInt(),
+      effectif: (json['effectif'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$StudyResultGroupImplToJson(

@@ -1426,9 +1426,9 @@ _$AuthResponseImpl _$$AuthResponseImplFromJson(Map<String, dynamic> json) =>
           const DateTimeSerializer().fromJson(json['expirationDate'] as String),
       token: json['token'] as String,
       uuid: json['uuid'] as String,
-      userId: json['userId'] as int,
-      idIndividu: json['idIndividu'] as int,
-      etablissementId: json['etablissementId'] as int,
+      userId: (json['userId'] as num).toInt(),
+      idIndividu: (json['idIndividu'] as num).toInt(),
+      etablissementId: (json['etablissementId'] as num).toInt(),
       userName: json['userName'] as String,
     );
 

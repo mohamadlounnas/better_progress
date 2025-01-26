@@ -8,7 +8,7 @@ part of 'bac_info.dart';
 
 _$BacInfoImpl _$$BacInfoImplFromJson(Map<String, dynamic> json) =>
     _$BacInfoImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       uuid: json['uuid'] as String,
       nin: json['nin'] as String,
       matricule: json['matricule'] as String,

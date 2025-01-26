@@ -2034,8 +2034,8 @@ extension ExamNoteQueryProperty
 
 _$ExamNoteImpl _$$ExamNoteImplFromJson(Map<String, dynamic> json) =>
     _$ExamNoteImpl(
-      id: json['id'] as int,
-      rattachementMcId: json['rattachementMcId'] as int,
+      id: (json['id'] as num).toInt(),
+      rattachementMcId: (json['rattachementMcId'] as num).toInt(),
       ueCode: json['ueCode'] as String,
       ueNatureLlFr: json['ueNatureLlFr'] as String,
       mcLibelleFr: json['mcLibelleFr'] as String,
@@ -2043,9 +2043,9 @@ _$ExamNoteImpl _$$ExamNoteImplFromJson(Map<String, dynamic> json) =>
       rattachementMcCoefficient:
           (json['rattachementMcCoefficient'] as num).toDouble(),
       rattachementMcCredit: (json['rattachementMcCredit'] as num).toDouble(),
-      planningSessionId: json['planningSessionId'] as int,
+      planningSessionId: (json['planningSessionId'] as num).toInt(),
       planningSessionIntitule: json['planningSessionIntitule'] as String,
-      idPeriode: json['idPeriode'] as int,
+      idPeriode: (json['idPeriode'] as num).toInt(),
       noteExamen: (json['noteExamen'] as num?)?.toDouble(),
     );
 

@@ -2976,16 +2976,16 @@ extension PeriodeQueryProperty
 
 _$PeriodeImpl _$$PeriodeImplFromJson(Map<String, dynamic> json) =>
     _$PeriodeImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       code: json['code'] as String,
       libelleLongLt: json['libelleLongLt'] as String,
       libelleLongAr: json['libelleLongAr'] as String,
       libelleCourtLt: json['libelleCourtLt'] as String?,
       libelleCourtAr: json['libelleCourtAr'] as String?,
-      rang: json['rang'] as int,
-      credit: json['credit'] as int,
+      rang: (json['rang'] as num).toInt(),
+      credit: (json['credit'] as num).toInt(),
       refCodePeriodicite: json['refCodePeriodicite'] as String?,
-      rangNiveau: json['rangNiveau'] as int,
+      rangNiveau: (json['rangNiveau'] as num).toInt(),
       refCodePeriode: json['refCodePeriode'] as String?,
       libelleLongFrNiveau: json['libelleLongFrNiveau'] as String,
       libelleLongFrCycle: json['libelleLongFrCycle'] as String,

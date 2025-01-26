@@ -7,12 +7,12 @@ part of 'group.dart';
 // **************************************************************************
 
 _$GroupImpl _$$GroupImplFromJson(Map<String, dynamic> json) => _$GroupImpl(
-      id: json['id'] as int,
-      groupePedagogiqueId: json['groupePedagogiqueId'] as int,
+      id: (json['id'] as num).toInt(),
+      groupePedagogiqueId: (json['groupePedagogiqueId'] as num).toInt(),
       nomGroupePedagogique: json['nomGroupePedagogique'] as String,
       dateAffectation: const DateTimeSerializer()
           .fromJson(json['dateAffectation'] as String),
-      periodeId: json['periodeId'] as int,
+      periodeId: (json['periodeId'] as num).toInt(),
       periodeCode: json['periodeCode'] as String,
       periodeLibelleLongLt: json['periodeLibelleLongLt'] as String,
     );

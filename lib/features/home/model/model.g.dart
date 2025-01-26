@@ -18,7 +18,7 @@ Map<String, dynamic> _$$HomeModelImplToJson(_$HomeModelImpl instance) =>
 
 _$HomeModelDataImpl _$$HomeModelDataImplFromJson(Map<String, dynamic> json) =>
     _$HomeModelDataImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       attributes: HomeModelAttributes.fromJson(
           json['attributes'] as Map<String, dynamic>),
     );
@@ -39,8 +39,8 @@ _$HomeModelAttributesImpl _$$HomeModelAttributesImplFromJson(
       publishedAt: json['publishedAt'] as String,
       actionUrl: json['actionUrl'] as String?,
       videoUrl: json['videoUrl'] as String?,
-      students: json['students'] as int,
-      courses: json['courses'] as int,
+      students: (json['students'] as num).toInt(),
+      courses: (json['courses'] as num).toInt(),
       mentors: (json['mentors'] as List<dynamic>)
           .map((e) => HomeModelMentors.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -72,7 +72,7 @@ Map<String, dynamic> _$$HomeModelAttributesImplToJson(
 _$HomeModelMentorsImpl _$$HomeModelMentorsImplFromJson(
         Map<String, dynamic> json) =>
     _$HomeModelMentorsImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       field: json['field'] as String,
       bio: json['bio'] as String,
@@ -90,7 +90,7 @@ Map<String, dynamic> _$$HomeModelMentorsImplToJson(
 _$HomeModelSectionsImpl _$$HomeModelSectionsImplFromJson(
         Map<String, dynamic> json) =>
     _$HomeModelSectionsImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       description: json['description'] as String,
     );
@@ -106,7 +106,7 @@ Map<String, dynamic> _$$HomeModelSectionsImplToJson(
 _$HomeModelOpinionsImpl _$$HomeModelOpinionsImplFromJson(
         Map<String, dynamic> json) =>
     _$HomeModelOpinionsImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       comment: json['comment'] as String,
     );

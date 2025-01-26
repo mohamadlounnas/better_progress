@@ -2406,7 +2406,7 @@ extension StudentQueryProperty
 
 _$StudentImpl _$$StudentImplFromJson(Map<String, dynamic> json) =>
     _$StudentImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       identifiant: json['identifiant'] as String,
       dateNaissance:
           const DateTimeSerializer().fromJson(json['dateNaissance'] as String),

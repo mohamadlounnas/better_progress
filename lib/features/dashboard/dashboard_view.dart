@@ -373,9 +373,10 @@ class DashboardView extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'mohamadlounnas | © 2023 Better Progress\nUSDB | All rights reserved.\nPrivet License',
+                                          // 'mohamadlounnas | © 2023 Better Progress\nUSDB | All rights reserved.\nPrivet License',
+                                          'mohamadlounnas | © ${DateTime.now().year} Better Progress\nUSDB | All rights reserved.\nMIT License (but limited)',
                                           style: TextStyle(
-                                            color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
+                                            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                                             fontSize: 12,
                                           ),
                                         ),

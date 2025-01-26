@@ -9,10 +9,10 @@ part of 'study_result_module.dart';
 _$StudyResultModuleImpl _$$StudyResultModuleImplFromJson(
         Map<String, dynamic> json) =>
     _$StudyResultModuleImpl(
-      id: json['id'] as int,
-      bilanUeId: json['bilanUeId'] as int,
-      bilanSessionId: json['bilanSessionId'] as int,
-      rattachementMcId: json['rattachementMcId'] as int,
+      id: (json['id'] as num).toInt(),
+      bilanUeId: (json['bilanUeId'] as num).toInt(),
+      bilanSessionId: (json['bilanSessionId'] as num).toInt(),
+      rattachementMcId: (json['rattachementMcId'] as num).toInt(),
       mcLibelleFr: json['mcLibelleFr'] as String,
       mcLibelleAr: json['mcLibelleAr'] as String,
       mcCode: json['mcCode'] as String,

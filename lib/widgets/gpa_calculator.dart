@@ -167,7 +167,7 @@ class _GPACalculatorState extends State<GPACalculator> {
   // }
 
   int getCoefficient(String name) {
-    return examNotes.where((element) => element.moduleName == name).firstOrNull?.rattachementMcCoefficient.toInt() ?? 0;
+    return examNotes.where((element) => element.moduleName == "ex:$name").firstOrNull?.rattachementMcCoefficient.toInt() ?? 0;
   }
 
   int get totalCoefficient {
@@ -252,47 +252,47 @@ class _GPACalculatorState extends State<GPACalculator> {
         Row(
           children: [
             // exams
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (var cnote in examNotes)
-                  Text(
-                    cnote.moduleName,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-              ],
-            ),
+            // Column(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     for (var cnote in examNotes)
+            //       Text(
+            //         cnote.moduleName,
+            //         style: const TextStyle(
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //       ),
+            //   ],
+            // ),
             // tds
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (var cnote in tds)
-                  Text(
-                    cnote.moduleName,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-              ],
-            ),
+            // Column(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     for (var cnote in tds)
+            //       Text(
+            //         cnote.moduleName,
+            //         style: const TextStyle(
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //       ),
+            //   ],
+            // ),
             // tps
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (var cnote in tps)
-                  Text(
-                    cnote.moduleName,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-              ],
-            ),
+            // Column(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     for (var cnote in tps)
+            //       Text(
+            //         cnote.moduleName,
+            //         style: const TextStyle(
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //       ),
+            //   ],
+            // ),
           ],
         ),
         // 2. cc periods
